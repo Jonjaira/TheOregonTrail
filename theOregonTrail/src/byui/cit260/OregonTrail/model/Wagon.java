@@ -12,26 +12,18 @@ import java.util.Objects;
  *
  * @author jonja
  */
-public class Player implements Serializable{
-    //Class Variables
+public class Wagon implements Serializable {
+    
+    //Class variables
     
     private String name;
-    private double score;
-    private Game game;
+    private String Type;
 
-    public Player() {
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
+    public Wagon() {
     }
     
     
-    
+
     public String getName() {
         return name;
     }
@@ -40,28 +32,28 @@ public class Player implements Serializable{
         this.name = name;
     }
 
-    public double getScore() {
-        return score;
+    public String getType() {
+        return Type;
     }
 
-    public void setScore(double score) {
-        this.score = score;
+    public void setType(String Type) {
+        this.Type = Type;
     }
 
-      @Override
+    @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", score=" + score + '}';
+        return "Wagon{" + "name=" + name + ", Type=" + Type + '}';
     }
     
+
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 41 * hash + Objects.hashCode(this.name);
-        hash = 41 * hash + (int) (Double.doubleToLongBits(this.score) ^ (Double.doubleToLongBits(this.score) >>> 32));
+        hash = 59 * hash + Objects.hashCode(this.name);
+        hash = 59 * hash + Objects.hashCode(this.Type);
         return hash;
     }
 
-  
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -73,17 +65,16 @@ public class Player implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Player other = (Player) obj;
-        if (Double.doubleToLongBits(this.score) != Double.doubleToLongBits(other.score)) {
+        final Wagon other = (Wagon) obj;
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.Type, other.Type)) {
             return false;
         }
         return true;
     }
     
-    
-    
+
     
 }

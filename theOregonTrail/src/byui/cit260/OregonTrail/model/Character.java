@@ -10,6 +10,10 @@ package byui.cit260.OregonTrail.model;
  * @author jonja
  */
 public enum Character {
+    
+    //All the characters in the game will have the same characteristics always.
+    //For that reason they are set as an enum.
+    
     Banquer("John", "Banquer", "Repair Ability: Low", "Animal AbilityHigh: Low", "Road Ability: Low","Strenght: Low"),
     Carpenter("Dave", "Carpenter", "Repair Ability: High", "Animal Ability: Low"," Road Ability: Medium", "Strenght: High"),
     Farmer("Steve", "Farmer", "Repair Ability: High", "Animal Ability: High", "Road Ability: High", "Strenght: High");

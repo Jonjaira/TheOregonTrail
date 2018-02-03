@@ -5,8 +5,8 @@
  */
 package javaapplication1;
 
-import byui.cit260.OregonTrail.model.Player;
-import byui.cit260.OregonTrail.model.Character;
+
+import byui.cit260.OregonTrail.model.Wagon;
 
 /**
  *
@@ -19,33 +19,14 @@ public class JavaApplication1 {
      */
     public static void main(String[] args) {
        
-        Player playerOne = new Player();
+        Wagon wagonOne = new Wagon();
         
-        playerOne.setName("Bu");
-        playerOne.setScore(3000);
+        wagonOne.setName("metal");
+        wagonOne.setType("metal");
         
-        String playerOneName = playerOne.getName();
-        double playerOneScore = playerOne.getScore();
+        String wagonOneName = wagonOne.getName();
+        String wagonOneType = wagonOne.getType();
         
-        Character.Farmer.getName();
-        Character.Farmer.getType();    
-        Character.Farmer.getRepairAbility();
-        Character.Farmer.getAnimalAbility();
-        Character.Farmer.getRoadAbility();
-        Character.Farmer.getStrenght();
-       
-       
-       
-       
-       System.out.println(playerOne.toString());
-       
-        System.out.println(Character.Farmer.getName());
-        System.out.println(Character.Farmer.getType());
-        System.out.println(Character.Farmer.getRepairAbility());
-        System.out.println(Character.Farmer.getAnimalAbility());
-        System.out.println(Character.Farmer.getRoadAbility());
-        System.out.println(Character.Farmer.getStrenght());
-
+        System.out.println(wagonOne.toString());
     }
-    
 }

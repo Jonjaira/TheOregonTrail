@@ -15,6 +15,7 @@ import java.util.Objects;
 public class Game implements Serializable {
     
     // Class Variables
+    
     private double time;
     private String status;
     private Player player;
