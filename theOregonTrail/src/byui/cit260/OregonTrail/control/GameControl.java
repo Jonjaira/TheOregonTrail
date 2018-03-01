@@ -6,6 +6,7 @@
 package byui.cit260.OregonTrail.control;
 
 import byui.cit260.OregonTrail.model.Player;
+import byui.cit260.OregonTrail.model.Character;
 import javaapplication1.JavaApplication1;
 
 /**
@@ -35,13 +36,9 @@ public class GameControl {
         RETURN player
         END
      */
-    public static Player savePlayer(String playersName) {
-        if (playersName.isEmpty() || (playersName.length() < 1)) {
-            return null;
-        }
-        
+    public static Player savePlayer(Character character) {
         Player player = new Player();
-        player.setName(playersName);
+        player.setCharacter(character);
         
         JavaApplication1.setPlayer(player);
         

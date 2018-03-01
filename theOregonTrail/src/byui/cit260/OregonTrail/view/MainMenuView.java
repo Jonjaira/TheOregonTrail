@@ -44,6 +44,7 @@ class MainMenuView {
         System.out.println("\nN - Start new game");
         System.out.println("R - Restart existing game");
         System.out.println("H - Get help on how to play the game");
+        System.out.println("S - Show the store");
         System.out.println("E - Exit");
         
         boolean valid = false;
@@ -81,6 +82,9 @@ class MainMenuView {
             case "H":
                 getHelp();
                 break;
+            case "S":
+                openStore();
+                break;
             case "E":
                 return true;
             default:
@@ -102,6 +106,13 @@ class MainMenuView {
 
     private void startNewGame() {
         GameControl.createNewGame(JavaApplication1.getPlayer());
+    }
+
+    private void openStore() {
+        StoreView storeView = new StoreView();
+        storeView.displayStoreView();
+        
+        System.out.println("Remaining Allowance: " + JavaApplication1.getPlayer().getCharacter().getAllowance());
     }
     
 }

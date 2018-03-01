@@ -6,12 +6,9 @@
 package javaapplication1;
 
 
-import byui.cit260.OregonTrail.model.Wagon;
-import byui.cit260.OregonTrail.model.Map;
-import byui.cit260.OregonTrail.model.Store;
-import byui.cit260.OregonTrail.model.Inventory;
-import byui.cit260.OregonTrail.model.Item;
-import byui.cit260.OregonTrail.model.Company;
+import byui.cit260.OregonTrail.model.Game;
+import byui.cit260.OregonTrail.model.Player;
+import byui.cit260.OregonTrail.view.StartProgramView;
 
 
 /**
@@ -20,42 +17,30 @@ import byui.cit260.OregonTrail.model.Company;
  */
 public class JavaApplication1 {
 
+    private static Game currentGame = null;
+    private static Player player = null;
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       
-        Wagon wagonOne = new Wagon();
-        
-        wagonOne.setName("metal");
-        wagonOne.setType("metal");
-        
-        String wagonOneName = wagonOne.getName();
-        String wagonOneType = wagonOne.getType();
-        
-        System.out.println(wagonOne.toString());
-        
-        Map mapOne = new Map ();
-        mapOne.setRowCount(10);
-        mapOne.setColumnCount(10);
-        mapOne.setCurrentColum(2);
-        mapOne.setCurrentRow(3);
-        
-        int mapOneRowCount = mapOne.getRowCount();
-        int mapOneCurrentRow = mapOne.getCurrentRow();
-        int mapOneColumnCount = mapOne.getColumnCount();
-        int mapOneCurrentColumn = mapOne.getCurrentColum();
-        
-        System.out.println(mapOne.toString());
-        
-       
-        Store storeOne = new Store ();
-        
-       
-        storeOne.setTotal(100);
-        
-        
-
-      
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.displayStartProgramView();
+    }
+    
+    public static Game getCurrentGame(){
+        return currentGame;
+    }
+    
+    public static void setCurrentGame(Game currentGame){
+        JavaApplication1.currentGame = currentGame;
+    }
+    
+    public static Player getPlayer(){
+        return player;
+    }
+    
+    public static void setPlayer(Player player){
+        JavaApplication1.player = player;
     }
 }

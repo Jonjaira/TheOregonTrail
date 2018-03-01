@@ -12,14 +12,18 @@ import byui.cit260.OregonTrail.model.Item;
  */
 public class StoreControl {
     
-    public static double buyItem( double totalAvailable, Item item, int quantity){
+    private static int quantity;
+   
+    public static double buyItem( double totalAvailable, Item item){
 
         if (totalAvailable < 0 || totalAvailable > 900){
             return -1;
         }
 
-        if (quantity <0 || quantity > 20){
+        if (StoreControl.quantity <0 || StoreControl.quantity > 20){
+            System.out.println("You can't buy more than 20 or less than 0");
             return -1;
+                    
         }
         
         if (item.getPrice() < 0.20 || item.getPrice() > 400)
@@ -28,8 +32,15 @@ public class StoreControl {
         double salesTax = 1.06;
         double remainderAvailable;
 
-        remainderAvailable = totalAvailable - ((item.getPrice() * quantity) *salesTax);
+        remainderAvailable = totalAvailable - ((item.getPrice() * StoreControl.quantity) *salesTax);
                 return remainderAvailable;
     }
     
+    public int getQuantity() {
+        return StoreControl.quantity;
+    }
+    
+    public static void setQuantity(int quantity) {
+        StoreControl.quantity = quantity;
+    }
 }

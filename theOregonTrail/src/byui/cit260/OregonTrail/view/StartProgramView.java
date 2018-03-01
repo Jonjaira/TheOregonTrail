@@ -6,8 +6,8 @@
 package byui.cit260.OregonTrail.view;
 
 import byui.cit260.OregonTrail.control.GameControl;
+import byui.cit260.OregonTrail.model.Character;
 import byui.cit260.OregonTrail.model.Player;
-import static java.sql.Types.NULL;
 import java.util.Scanner;
 
 /**
@@ -85,15 +85,23 @@ public class StartProgramView {
         System.out.println("You will try to successfully get your company "
                            + "across the country through the oregon trail.");
         
+        System.out.println("\n 1- " + Character.Banquer.getName());
+        System.out.println(" 2- " + Character.Carpenter.getName());
+        System.out.println(" 3- " + Character.Farmer.getName());
+        
         boolean valid = false;
         
         while (valid == false) {            
-            System.out.println("\nEnter your name: ");
+            System.out.println("\nEnter your character choice: ");
             String userInput = input.nextLine().trim();
             
             if (userInput.isEmpty()) {
                 System.out.println("You must enter a non-blank value");
             }
+            else if ((!userInput.equals("1")) && (!userInput.equals("2"))  && (!userInput.equals("3"))) {
+               System.out.println("Invalid choice, please choose a character.");
+            }
+                
             else
             {
                 inputs[0] = userInput;
@@ -125,12 +133,30 @@ public class StartProgramView {
         RETURN true 
      */
     private boolean doAction(String[] inputs) {
-        String playersName = inputs[0];
+        String characterChoice = inputs[0];
+        Character character = Character.Banquer;
         
-        Player player = GameControl.savePlayer(playersName);
+        switch(characterChoice)
+        {
+            case "1":
+                character = Character.Banquer;
+                break;
+            case "2":
+                character = Character.Carpenter;
+                break;
+            case "3":
+                character = Character.Farmer;
+                break;
+            default:
+                
+               
+                break;
+        }
+        
+        Player player = GameControl.savePlayer(character);
         
         System.out.println("\n================================================= ");
-        System.out.println("Welcome to the game " + playersName);
+        System.out.println("Welcome to the game " + character.getName());
         System.out.println("We hope you have a lot of fun!");
         System.out.println("================================================= ");
         

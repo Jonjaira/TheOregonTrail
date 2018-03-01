@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Player implements Serializable{
     //Class Variables
     
-    private String name;
+    private Character character;
     private double score;
     private Game game;
 
@@ -30,14 +30,12 @@ public class Player implements Serializable{
         this.game = game;
     }
     
-    
-    
-    public String getName() {
-        return name;
+    public Character getCharacter() {
+        return this.character;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    
+    public void setCharacter(Character character) {
+        this.character = character;
     }
 
     public double getScore() {
@@ -50,13 +48,13 @@ public class Player implements Serializable{
 
       @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", score=" + score + '}';
+        return "Player{" + "name=" + this.character.getName() + ", score=" + score + '}';
     }
     
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 41 * hash + Objects.hashCode(this.name);
+        hash = 41 * hash + Objects.hashCode(this.character.getName());
         hash = 41 * hash + (int) (Double.doubleToLongBits(this.score) ^ (Double.doubleToLongBits(this.score) >>> 32));
         return hash;
     }
@@ -77,10 +75,14 @@ public class Player implements Serializable{
         if (Double.doubleToLongBits(this.score) != Double.doubleToLongBits(other.score)) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.character.getName(), other.character.getName())) {
             return false;
         }
         return true;
+    }
+
+    public void setCharacter(java.lang.Character character) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
