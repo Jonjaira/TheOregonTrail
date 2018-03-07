@@ -18,7 +18,7 @@ public class StoreControl {
 
         if (totalAvailable < 0 || totalAvailable > 900){
             return -1;
-        }
+                    }
 
         if (StoreControl.quantity <0 || StoreControl.quantity > 20){
             System.out.println("You can't buy more than 20 or less than 0");
@@ -36,7 +36,7 @@ public class StoreControl {
                 return remainderAvailable;
     }
     
-    public int getQuantity() {
+        public static int getQuantity() {
         return StoreControl.quantity;
     }
     
