@@ -14,9 +14,9 @@ public enum Character {
     //All the characters in the game will have the same characteristics always.
     //For that reason they are set as an enum.
     
-    Banquer("John", "Banquer", "Repair Ability: Low", "Animal AbilityHigh: Low", "Road Ability: Low","Strenght: Low", 900.00),
-    Carpenter("Dave", "Carpenter", "Repair Ability: High", "Animal Ability: Low"," Road Ability: Medium", "Strenght: High", 720.00),
-    Farmer("Steve", "Farmer", "Repair Ability: High", "Animal Ability: High", "Road Ability: High", "Strenght: High", 540.00);
+    Banquer(" ", "Banquer", "Repair Ability: Low", "Animal AbilityHigh: Low", "Road Ability: Low","Strenght: Low", 900.00),
+    Carpenter(" ", "Carpenter", "Repair Ability: High", "Animal Ability: Low"," Road Ability: Medium", "Strenght: High", 720.00),
+    Farmer(" ", "Farmer", "Repair Ability: High", "Animal Ability: High", "Road Ability: High", "Strenght: High", 540.00);
     
     private String name;
     private String type;
@@ -28,19 +28,23 @@ public enum Character {
     
 Character(String name, String type, String repairAbility, String animalAbility,
           String roadAbility, String strenght, double allowance){
-this.name = name;
-this.type = type;
-this.repairAbility = repairAbility;
-this.animalAbility = animalAbility;
-this.roadAbility = roadAbility;
-this.strenght = strenght;
-this.allowance = allowance;
+    this.name = name;
+    this.type = type;
+    this.repairAbility = repairAbility;
+    this.animalAbility = animalAbility;
+    this.roadAbility = roadAbility;
+    this.strenght = strenght;
+    this.allowance = allowance;
 }
 
     public String getName() {
         return name;
     }
-
+    
+    public void setName (String name){
+        this.name = name;
+    }
+    
     public double getAllowance() {
         return this.allowance;
     }
