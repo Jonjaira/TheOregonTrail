@@ -25,7 +25,7 @@ public class JavaApplication1 {
      */
     public static void main(String[] args) {
         StartProgramView startProgramView = new StartProgramView();
-        startProgramView.displayStartProgramView();
+        startProgramView.display();
     }
     
     public static Game getCurrentGame(){
