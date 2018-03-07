@@ -14,69 +14,28 @@ import javaapplication1.JavaApplication1;
  *
  * @author jonja
  */
-public class StoreView {
-     void displayStoreView() {
-        boolean endOfView = false;
-        String[] inputs = new String[1];
+public class StoreView extends View {
+     public StoreView() {
+ 
+      super("\n 1- " + Item.Ammunition.getName() + " ------ " + Item.Ammunition.getPrice()
+        +"\n 2- " + Item.AmmunitionBox.getName() + " -- " + Item.AmmunitionBox.getPrice()
+        +"\n 3- " + Item.Axle.getName() + " ------------ " + Item.Axle.getPrice()
+        +"\n 4- " + Item.Clothing.getName() + " -------- " + Item.Clothing.getPrice()
+        +"\n 5- " + Item.FirstAidKit.getName() + " --- " + Item.FirstAidKit.getPrice()
+        +"\n 6- " + Item.Food.getName()+ " ------------ " + Item.Food.getPrice()
+        +"\n 7- " + Item.Oxen.getName()+ " ------------ " + Item.Oxen.getPrice()
+        +"\n 8- " + Item.StarterPackage.getName() + " - " + Item.StarterPackage.getPrice()
+        +"\n 9- " + Item.Tongue.getName()+ " ---------- " + Item.Tongue.getPrice()
+        +"\n10- " + Item.Tools.getName() + " ----------- " + Item.Tools.getPrice()
+        +"\n11- " + Item.metalWheel.getName()+ " ----- " + Item.metalWheel.getPrice()
+        +"\n12- " + Item.woodWheel.getName() + " ------ " + Item.woodWheel.getPrice()
+        +"\nE - Exit"
+        +"\nAllowance Available: " + JavaApplication1.getPlayer().getCharacter().getAllowance());
+}
         
-        do {            
-            inputs = this.getInputs();
-            
-            if (inputs.length < 1) {
-                return;
-            }
-            
-            inputs[0] = inputs[0].toUpperCase();
-            
-            if (inputs[0].equals("Q")) {
-                return;
-            }
-            
-            endOfView = doAction(inputs);
-            
-        } while (endOfView != true);
-    }
-
-  private String[] getInputs() {
-        String[] inputs = new String[1];
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("\n 1- " + Item.Ammunition.getName() + " ------ " + Item.Ammunition.getPrice());
-        System.out.println(" 2- " + Item.AmmunitionBox.getName() + " -- " + Item.AmmunitionBox.getPrice());
-        System.out.println(" 3- " + Item.Axle.getName() + " ------------ " + Item.Axle.getPrice());
-        System.out.println(" 4- " + Item.Clothing.getName() + " -------- " + Item.Clothing.getPrice());
-        System.out.println(" 5- " + Item.FirstAidKit.getName() + " --- " + Item.FirstAidKit.getPrice()); 
-        System.out.println(" 6- " + Item.Food.getName()+ " ------------ " + Item.Food.getPrice());
-        System.out.println(" 7- " + Item.Oxen.getName()+ " ------------ " + Item.Oxen.getPrice());
-        System.out.println(" 8- " + Item.StarterPackage.getName() + " - " + Item.StarterPackage.getPrice());
-        System.out.println(" 9- " + Item.Tongue.getName()+ " ---------- " + Item.Tongue.getPrice());
-        System.out.println("10- " + Item.Tools.getName() + " ----------- " + Item.Tools.getPrice());
-        System.out.println("11- " + Item.metalWheel.getName()+ " ----- " + Item.metalWheel.getPrice());
-        System.out.println("12- " + Item.woodWheel.getName() + " ------ " + Item.woodWheel.getPrice()); 
-        System.out.println("E - Exit");
-        System.out.println("\nAllowance Available: " + JavaApplication1.getPlayer().getCharacter().getAllowance());
-        
-        boolean valid = false;
-        
-        while (valid == false) {            
-            System.out.println("Enter your choice: ");
-            String userInput = input.nextLine().trim();
-            
-            if (userInput.isEmpty()) {
-                System.out.println("You must enter a non-blank value");
-            }
-            else
-            {
-                inputs[0] = userInput;
-                valid = true;
-            }
-        }
-        
-        return inputs;
-    }
-    
-  private boolean doAction(String[] inputs) {
-        String menuItem = inputs[0];
+  @Override  
+  public boolean doAction(String inputs) {
+        String menuItem = inputs;
         
         menuItem = menuItem.toUpperCase();
         
@@ -129,7 +88,7 @@ public class StoreView {
 
     private void purchaseItem(Item item) {
         PurchaseView purchaseView = new PurchaseView();
-        purchaseView.displayPurchaseView();
+        purchaseView.display();
         double remainingAllowance;
         
         remainingAllowance = StoreControl.buyItem(JavaApplication1.getPlayer().getCharacter().getAllowance(), item);

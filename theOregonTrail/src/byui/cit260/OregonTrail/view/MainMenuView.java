@@ -13,61 +13,19 @@ import javaapplication1.JavaApplication1;
  *
  * @author jonja
  */
-class MainMenuView {
+public class MainMenuView extends View {
 
-    void displayMainMenuView() {
-        boolean endOfView = false;
-        String[] inputs = new String[1];
-        
-        do {            
-            inputs = this.getInputs();
-            
-            if (inputs.length < 1) {
-                return;
-            }
-            
-            inputs[0] = inputs[0].toUpperCase();
-            
-            if (inputs[0].equals("Q")) {
-                return;
-            }
-            
-            endOfView = doAction(inputs);
-            
-        } while (endOfView != true);
+    public MainMenuView() {
+    super ("\nN - Start new game"
+    + "\nR - Restart existing game"
+    +"\nH - Get help on how to play the game"
+    +"\nS - Show the store"
+    +"\nE - Exit"
+    +"\n\nEnter Selection Below: ");
     }
-
-    private String[] getInputs() {
-        String[] inputs = new String[1];
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("\nN - Start new game");
-        System.out.println("R - Restart existing game");
-        System.out.println("H - Get help on how to play the game");
-        System.out.println("S - Show the store");
-        System.out.println("E - Exit");
-        
-        boolean valid = false;
-        
-        while (valid == false) {            
-            System.out.println("Enter your choice: ");
-            String userInput = input.nextLine().trim();
-            
-            if (userInput.isEmpty()) {
-                System.out.println("You must enter a non-blank value");
-            }
-            else
-            {
-                inputs[0] = userInput;
-                valid = true;
-            }
-        }
-        
-        return inputs;
-    }
-
-    private boolean doAction(String[] inputs) {
-        String menuItem = inputs[0];
+    @Override
+    public boolean doAction(String inputs) {
+        String menuItem = inputs;
         
         menuItem = menuItem.toUpperCase();
         
@@ -96,7 +54,7 @@ class MainMenuView {
 
     private void getHelp() {
         HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
+        helpMenuView.display();
     }
 
     private void restartGame() {
@@ -110,9 +68,8 @@ class MainMenuView {
 
     private void openStore() {
         StoreView storeView = new StoreView();
-        storeView.displayStoreView();
+        storeView.display();
         
         System.out.println("Remaining Allowance: " + JavaApplication1.getPlayer().getCharacter().getAllowance());
-    }
-    
+    }    
 }
