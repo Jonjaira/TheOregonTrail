@@ -18,21 +18,20 @@ public class StartProgramView extends View {
     
     public StartProgramView(){
         
-    super ("===================================================================================================="
-                           +"\nWelcome to the Oregon trail! The estrategy game where "
-                           + "you will put your survival skills to test!"
-                           + "\nYou will try to successfully get your company "
-                           + "across the country through the oregon trail."
-                           + "\nYou will plan the trip, face many challenges, "
-                           + "you will have to provide for your people,"
-                           + "\nmake decisions, hunt, work, and see all sorts "
-                           + "of wonderful creatures and scenery on the way. "
-                           + "\nBut be careful and minfdul of your company because they "
-                           + "will get hungry,they will get tired, "
-                           + "\nthey will get sick, and you must get "
-                           + "everyone safe and healthy to Oregon!"
-                           +"\nWe hope you have lots of fun in your journey!"   
-                           +"\n===================================================================================================="
+    super (   "====================================================================================================\n\n"
+            + "   ___    ____    _____    ____    ___    _   _     _____   ____       _      ___   _     \n"
+            + "  / _ \\  |  _ \\  | ____|  / ___|  / _ \\  | \\ | |   |_   _| |  _ \\     / \\    |_ _| | |    \n"
+            + " | | | | | |_) | |  _|   | |  _  | | | | |  \\| |     | |   | |_) |   / _ \\    | |  | |    \n"
+            + " | |_| | |  _ <  | |___  | |_| | | |_| | | |\\  |     | |   |  _ <   / ___ \\   | |  | |___ \n"
+            + "  \\___/  |_| \\_\\ |_____|  \\____|  \\___/  |_| \\_|     |_|   |_| \\_\\ /_/   \\_\\ |___| |_____|"
+            + "\n\nWelcome to the Oregon trail! The estrategy game where you will put your survival skills to test!"
+            + "\nYou will try to successfully get your company across the country through the oregon trail."
+            + "\nYou will plan the trip, face many challenges, you will have to provide for your people,"
+            + "\nmake decisions, hunt, work, and see all sorts of wonderful creatures and scenery on the way. "
+            + "\nBut be careful and minfdul of your company because they will get hungry,they will get tired, "
+            + "\nthey will get sick, and you must get everyone safe and healthy to Oregon!"
+            + "\n\nWe hope you have lots of fun in your journey!"   
+            + "\n===================================================================================================="
         
         +"\n\n 1- " + Character.Banquer.getType()
         +"\n 2- " + Character.Carpenter.getType()

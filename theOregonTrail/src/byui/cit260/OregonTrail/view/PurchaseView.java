@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class PurchaseView extends View {
        public PurchaseView(){
-       super("Enter amount");
+       super("Please enter the desired amount to purchase");
        }
        
     @Override
