@@ -20,6 +20,7 @@ public class MainMenuView extends View {
     + "\nR - Restart existing game"
     +"\nH - Get help on how to play the game"
     +"\nS - Show the store"
+    +"\nW - Work Options"
     +"\nE - Exit"
     +"\n\nEnter Selection Below: ");
     }
@@ -43,6 +44,9 @@ public class MainMenuView extends View {
             case "S":
                 openStore();
                 break;
+            case "W":
+                workOptions();
+                break;
             case "E":
                 return true;
             default:
@@ -65,11 +69,16 @@ public class MainMenuView extends View {
     private void startNewGame() {
         GameControl.createNewGame(JavaApplication1.getPlayer());
     }
-
+    
     private void openStore() {
         StoreView storeView = new StoreView();
         storeView.display();
         
         System.out.println("Remaining Allowance: " + JavaApplication1.getPlayer().getCharacter().getAllowance());
     }    
+
+    private void workOptions() {
+        WorkingMenuView workingMenuView = new WorkingMenuView();
+        workingMenuView.display();
+    }
 }

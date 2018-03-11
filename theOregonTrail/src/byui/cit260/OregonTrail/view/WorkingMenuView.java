@@ -30,12 +30,12 @@ public class WorkingMenuView extends View{
         switch(menuWorkgin)
         {
             case "S":
-                System.out.println("\nJOB             |   Point"
+                System.out.println("\nJOB                 |  Point"
                         + "\n___________________________"
-                        + "\nDishwashing         |   10" 
-                        + "\nBroken window       |   10" 
-                        + "\nBroken pipe         |   20" 
-                        + "\nChange wheels       |   30");
+                        + "\nDishwashing         |     10" 
+                        + "\nBroken window       |     10" 
+                        + "\nBroken pipe         |     20" 
+                        + "\nChange wheels       |     30");
                 break;
             case "T":
                 System.out.println("\nHammer"
