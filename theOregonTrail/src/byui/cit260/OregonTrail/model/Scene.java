@@ -12,14 +12,14 @@ import java.util.Objects;
  *
  * @author Hansel castro
  */
-public class Scene1 implements Serializable{
+public class Scene implements Serializable{
   
    //class instance variables
     private String location;
     private String type; 
     private String image;
 
-    public Scene1() {
+    public Scene() {
     }
     
     
@@ -74,7 +74,7 @@ public class Scene1 implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Scene1 other = (Scene1) obj;
+        final Scene other = (Scene) obj;
         if (!Objects.equals(this.location, other.location)) {
             return false;
         }

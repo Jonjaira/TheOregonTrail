@@ -13,11 +13,11 @@ import java.util.Objects;
  *
  * @author rimor
  */
-public class Working1 implements Serializable{
+public class Working implements Serializable{
     
     private String tools;
 
-    public Working1() {
+    public Working() {
     }
     
     
@@ -56,7 +56,7 @@ public class Working1 implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Working1 other = (Working1) obj;
+        final Working other = (Working) obj;
         if (!Objects.equals(this.tools, other.tools)) {
             return false;
         }

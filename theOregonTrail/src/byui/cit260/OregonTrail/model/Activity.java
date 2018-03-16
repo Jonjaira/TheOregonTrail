@@ -14,11 +14,11 @@ import java.util.Objects;
  *
  * @author rimor
  */
-public class Activity1 implements Serializable {
+public class Activity implements Serializable {
     private String description;
     private double ponitsAwarded;
 
-    public Activity1() {
+    public Activity() {
     }
     
     
@@ -65,7 +65,7 @@ public class Activity1 implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Activity1 other = (Activity1) obj;
+        final Activity other = (Activity) obj;
         if (Double.doubleToLongBits(this.ponitsAwarded) != Double.doubleToLongBits(other.ponitsAwarded)) {
             return false;
         }

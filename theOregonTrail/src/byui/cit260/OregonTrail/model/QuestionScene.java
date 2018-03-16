@@ -12,13 +12,13 @@ import java.util.Objects;
  *
  * @author Hansel castro
  */
-public class QuestionScene1 implements Serializable {
+public class QuestionScene extends Scene implements Serializable {
     private String answer;
     private String question;
     private Integer questionNumber;
     private String status;
 
-    public QuestionScene1() {
+    public QuestionScene() {
     }
     
     
@@ -83,7 +83,7 @@ public class QuestionScene1 implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final QuestionScene1 other = (QuestionScene1) obj;
+        final QuestionScene other = (QuestionScene) obj;
         if (!Objects.equals(this.answer, other.answer)) {
             return false;
         }

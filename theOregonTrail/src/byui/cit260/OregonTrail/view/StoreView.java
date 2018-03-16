@@ -97,11 +97,16 @@ public class StoreView extends View {
         System.out.println("You selected " + item.getName());
         purchaseView.display();
         double remainingAllowance;
-      
         
         remainingAllowance = StoreControl.buyItem(JavaApplication1.getPlayer().getCharacter().getAllowance(), item);
+        
         if(remainingAllowance != -1){
                JavaApplication1.getPlayer().getCharacter().setAllowance(remainingAllowance);
+               int quantity = StoreControl.getQuantity();
+               
+               for (int i = 0; i < quantity; i++) {
+                   JavaApplication1.getPlayer().getInventory().addItemToInventory(item);
+            }
         }
      
     }

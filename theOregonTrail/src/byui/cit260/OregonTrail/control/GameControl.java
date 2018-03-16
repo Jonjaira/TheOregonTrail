@@ -7,6 +7,9 @@ package byui.cit260.OregonTrail.control;
 
 import byui.cit260.OregonTrail.model.Player;
 import byui.cit260.OregonTrail.model.Character;
+import byui.cit260.OregonTrail.model.Game;
+import byui.cit260.OregonTrail.model.Map;
+import byui.cit260.OregonTrail.view.CompanyNamesView;
 import javaapplication1.JavaApplication1;
 
 /**
@@ -14,6 +17,8 @@ import javaapplication1.JavaApplication1;
  * @author jonja
  */
 public class GameControl {
+    
+    private static String actor;
     
     public static double calcTotalAvailable( double allowance) {
 
@@ -45,7 +50,54 @@ public class GameControl {
         return new Player();
     }
     
-    public static void createNewGame(Player player){
-        System.out.println("*** createNewGame() called ***");
+    public static int createNewGame(Player player){
+    /*if (player == null)
+    return -1
+    game = create a new Game object
+    Save a reference to the Player object in the game
+    Save a reference to the game in the main class
+    
+    actors = createActors()
+    Save the list of actors in the Game object
+    Assign an actor to the player
+    
+    items = createItems()
+    Save the list of items in the game
+    
+    map = createMap(noOfRows, noOfColumns, items)
+    IF map == null THEN
+      RETURN -1
+    ENDIF
+    
+    Assign the map to the game
+    RETURN 1 // indicates success
+    }*/
+        CompanyNamesView companyNamesView = new CompanyNamesView();
+        String[] actors = new String[4];
+
+        if (player == null)
+            return -1;
+        
+        Game game = new Game();
+        game.setPlayer(player);
+        JavaApplication1.setCurrentGame(game);
+
+        for (int i = 0; i < 4; i++) {
+            companyNamesView.display();
+
+            actors[i] = actor;
+
+            System.out.println("\nA new member \"" + actors[i] + "\" has been added to the company");
+        }
+
+        JavaApplication1.getCurrentGame().getPlayer().getCompany().setPeople(actors);
+
+
+        
+        return 1;
+    }
+    
+    public static void setActor(String personage){
+        actor = personage;
     }
 }

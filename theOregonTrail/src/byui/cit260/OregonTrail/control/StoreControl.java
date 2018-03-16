@@ -33,7 +33,8 @@ public class StoreControl {
         double remainderAvailable;
 
         remainderAvailable = totalAvailable - ((item.getPrice() * StoreControl.quantity) *salesTax);
-                return remainderAvailable;
+        
+        return remainderAvailable;
     }
     
         public static int getQuantity() {

@@ -18,8 +18,12 @@ public class Player implements Serializable{
     private Character character;
     private double score;
     private Game game;
+    private Company company;
+    private Inventory inventory;
 
     public Player() {
+        this.company = new Company();
+        this.score = 0;
     }
 
     public Game getGame() {
@@ -28,6 +32,14 @@ public class Player implements Serializable{
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+    
+    public Inventory getInventory() {
+        return this.inventory;
     }
     
     public Character getCharacter() {

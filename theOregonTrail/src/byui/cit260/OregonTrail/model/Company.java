@@ -16,7 +16,7 @@ public class Company implements Serializable {
     //This class is set as an array because its components will be always five
     //but the names might change.
     
-    private String[] people = new String[5];
+    private String[] people = new String[4];
 
     public Company() {
     }

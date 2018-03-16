@@ -12,16 +12,47 @@ import java.util.Objects;
  *
  * @author Hansel castro
  */
-public class LocationScene implements Serializable {
+public class Location implements Serializable {
     
+    private int row;
+    private int col;
     private String name;
     private String activityType;
+    private boolean visited;
 
-    public LocationScene() {
+    public Location() {
+    }
+
+    public Location(int row, int col, boolean visited) {
+        this.row = row;
+        this.col = col;
+        this.visited = visited;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
     }
     
-    
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
 
+    public boolean getVisited() {
+        return this.visited;
+    }
+    
     public String getName() {
         return name;
     }
@@ -62,7 +93,7 @@ public class LocationScene implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final LocationScene other = (LocationScene) obj;
+        final Location other = (Location) obj;
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }

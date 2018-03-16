@@ -16,11 +16,14 @@ public class Map implements Serializable{
     private int currentRow; 
     private int columnCount; 
     private int currentColum;
+    private Location locations[][];
 
-    public Map() {
+    public Map(int rowCount, int columnCount) {
+        this.rowCount = rowCount;
+        this.currentRow = 0;
+        this.columnCount = columnCount;
+        this.currentColum = 0;
     }
-    
-    
 
     public int getRowCount() {
         return rowCount;
@@ -54,12 +57,19 @@ public class Map implements Serializable{
         this.currentColum = currentColum;
     }
 
+    public Location[][] getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
+    }
+
     @Override
     public String toString() {
         return "Map{" + "rowCount=" + rowCount + ", currentRow=" + currentRow + ", columnCount=" + columnCount + ", currentColum=" + currentColum + '}';
     }
     
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -96,9 +106,4 @@ public class Map implements Serializable{
         }
         return true;
     }
-
-    
-    
-
-
 }

@@ -12,16 +12,14 @@ import java.util.Objects;
  *
  * @author Hansel castro
  */
-public class GenericScene1 implements Serializable {
+public class GenericScene extends Scene implements Serializable {
     
     private String terrainColor;
     private String terrainType;
     private String skyColor;
 
-    public GenericScene1() {
+    public GenericScene() {
     }
-    
-    
 
     public String getTerrainColor() {
         return terrainColor;
@@ -72,7 +70,7 @@ public class GenericScene1 implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final GenericScene1 other = (GenericScene1) obj;
+        final GenericScene other = (GenericScene) obj;
         if (!Objects.equals(this.terrainColor, other.terrainColor)) {
             return false;
         }

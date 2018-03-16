@@ -30,6 +30,23 @@ public class Inventory implements Serializable {
         this.inventory = inventory;
     }
 
+    public void addItemToInventory(Item item){
+        this.inventory.add(item);
+    }
+
+    public Item getItemFromInventory(Item item){
+        int indexOfelement = this.inventory.indexOf(item);
+        
+        if (-1 != indexOfelement) {
+            item = this.inventory.get(indexOfelement);
+        }
+        else {
+            return null;
+        }
+        
+        return item; 
+    }
+    
     @Override
     public String toString() {
         return "Inventory{" + "inventory=" + inventory + '}';
@@ -59,8 +76,4 @@ public class Inventory implements Serializable {
         }
         return true;
     }
-    
-    
-    
-    
 }

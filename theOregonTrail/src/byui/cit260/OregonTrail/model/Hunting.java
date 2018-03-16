@@ -11,10 +11,10 @@ import java.io.Serializable;
  *
  * @author rimor
  */
-public class Hunting1 implements Serializable{
+public class Hunting implements Serializable{
     private int bullets;
 
-    public Hunting1() {
+    public Hunting() {
     }
     
     
@@ -52,7 +52,7 @@ public class Hunting1 implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Hunting1 other = (Hunting1) obj;
+        final Hunting other = (Hunting) obj;
         if (this.bullets != other.bullets) {
             return false;
         }

@@ -12,12 +12,12 @@ import java.util.Objects;
  *
  * @author rimor
  */
-public class Trading1 implements Serializable{
+public class Trading implements Serializable{
     
     private String itemTraded;
     private String itemObtained;
 
-    public Trading1() {
+    public Trading() {
     }
     
     
@@ -64,7 +64,7 @@ public class Trading1 implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Trading1 other = (Trading1) obj;
+        final Trading other = (Trading) obj;
         if (!Objects.equals(this.itemTraded, other.itemTraded)) {
             return false;
         }
