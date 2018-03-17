@@ -14,15 +14,13 @@ import java.util.Objects;
  */
 public class QuestionScene extends Scene implements Serializable {
     private String answer;
-    private String question;
+    private Question[] questions;
     private Integer questionNumber;
     private String status;
 
     public QuestionScene() {
     }
     
-    
-
     public String getAnswer() {
         return answer;
     }
@@ -31,12 +29,12 @@ public class QuestionScene extends Scene implements Serializable {
         this.answer = answer;
     }
 
-    public String getQuestion() {
-        return question;
+    public Question[] getQuestions() {
+        return questions;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setQuestions(Question[] questions) {
+        this.questions = questions;
     }
 
     public Integer getQuestionNumber() {
@@ -59,7 +57,7 @@ public class QuestionScene extends Scene implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 43 * hash + Objects.hashCode(this.answer);
-        hash = 43 * hash + Objects.hashCode(this.question);
+        hash = 43 * hash + Objects.hashCode(this.questions);
         hash = 43 * hash + Objects.hashCode(this.questionNumber);
         hash = 43 * hash + Objects.hashCode(this.status);
         return hash;
@@ -67,7 +65,7 @@ public class QuestionScene extends Scene implements Serializable {
 
     @Override
     public String toString() {
-        return "QuestionScene1{" + "answer=" + answer + ", question=" + question + ", questionNumber=" + questionNumber + ", status=" + status + '}';
+        return "QuestionScene1{" + "answer=" + answer + ", question=" + questions + ", questionNumber=" + questionNumber + ", status=" + status + '}';
     }
     
          
@@ -87,7 +85,7 @@ public class QuestionScene extends Scene implements Serializable {
         if (!Objects.equals(this.answer, other.answer)) {
             return false;
         }
-        if (!Objects.equals(this.question, other.question)) {
+        if (!Objects.equals(this.questions, other.questions)) {
             return false;
         }
         if (!Objects.equals(this.status, other.status)) {

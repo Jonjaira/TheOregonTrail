@@ -91,8 +91,8 @@ public class GameControl {
         }
 
         JavaApplication1.getCurrentGame().getPlayer().getCompany().setPeople(actors);
-
-
+        
+        JavaApplication1.getCurrentGame().setMap(MapControl.createMap(5, 5));
         
         return 1;
     }

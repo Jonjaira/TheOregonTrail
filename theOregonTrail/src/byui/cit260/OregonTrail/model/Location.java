@@ -19,6 +19,7 @@ public class Location implements Serializable {
     private String name;
     private String activityType;
     private boolean visited;
+    private Scene scene;
 
     public Location() {
     }
@@ -67,6 +68,14 @@ public class Location implements Serializable {
 
     public void setActivityType(String activityType) {
         this.activityType = activityType;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
     }
 
     @Override

@@ -20,6 +20,7 @@ public class MainMenuView extends View {
     + "\nR - Restart existing game"
     +"\nH - Get help on how to play the game"
     +"\nS - Show the store"
+    +"\nM - Show the Game Menu"
     +"\nE - Exit"
     +"\n\nEnter Selection Below: ");
     }
@@ -42,6 +43,9 @@ public class MainMenuView extends View {
                 break;
             case "S":
                 openStore();
+                break;
+            case "M":
+                showGameMenu();
                 break;
             case "E":
                 return true;
@@ -71,5 +75,15 @@ public class MainMenuView extends View {
         storeView.display();
         
         System.out.println("Remaining Allowance: " + JavaApplication1.getPlayer().getCharacter().getAllowance());
-    }    
+    }
+    
+    private void showGameMenu() {
+        if (JavaApplication1.getCurrentGame() == null) {
+            System.out.println("\n\n\n!!! No New Game Has Started Yet!!!");
+        }
+        else {
+            GameMenuView gameMenuView = new GameMenuView();
+            gameMenuView.display();
+        }
+    }
 }

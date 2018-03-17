@@ -31,9 +31,6 @@ public class Game implements Serializable {
     public void setPlayer(Player player) {
         this.player = player;
     }
-
-    public void setMap(Map map) {
-    }
     
     public double getTime() {
         return time;
@@ -49,6 +46,14 @@ public class Game implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
     }
     
         @Override

@@ -9,15 +9,15 @@ package byui.cit260.OregonTrail.model;
  *
  * @author jonja
  */
-public enum SceneType {
-    start,
-    mountains,
-    road,
-    forest,
-    desert,
-    city,
-    town,
-    lake,
-    river,
-    finish;
+public enum QuestionType {
+    drinkWater,
+    talkToPeople,
+    visitTown,
+    fight,
+    sellItem,
+    wannaHunt,
+    wannaRest,
+    hitTheRoad,
+    wannaExit,
+    cancel;
 }
