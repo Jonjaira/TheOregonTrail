@@ -21,6 +21,7 @@ public class MainMenuView extends View {
     +"\nH - Get help on how to play the game"
     +"\nS - Show the store"
     +"\nM - Show the Game Menu"
+    +"\nW - Work Options"
     +"\nE - Exit"
     +"\n\nEnter Selection Below: ");
     }
@@ -46,6 +47,8 @@ public class MainMenuView extends View {
                 break;
             case "M":
                 showGameMenu();
+            case "W":
+                workOptions();
                 break;
             case "E":
                 return true;
@@ -69,7 +72,7 @@ public class MainMenuView extends View {
     private void startNewGame() {
         GameControl.createNewGame(JavaApplication1.getPlayer());
     }
-
+    
     private void openStore() {
         StoreView storeView = new StoreView();
         storeView.display();
@@ -85,5 +88,10 @@ public class MainMenuView extends View {
             GameMenuView gameMenuView = new GameMenuView();
             gameMenuView.display();
         }
+    }    
+
+    private void workOptions() {
+        WorkingMenuView workingMenuView = new WorkingMenuView();
+        workingMenuView.display();
     }
 }
