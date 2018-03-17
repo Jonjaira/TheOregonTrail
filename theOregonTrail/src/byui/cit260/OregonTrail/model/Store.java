@@ -18,19 +18,24 @@ public class Store implements Serializable{
     //different data type objects and it will change its size, it needed to
     //be an array list.
     
-    private ArrayList<Item> shoppingCart = new ArrayList<Item>();
+    private static ArrayList<Item> shoppingCart = new ArrayList<Item>();
     private int total;
 
     public Store() {
     }
     
-
-    public ArrayList<Item> getShoppingCart() {
-        return shoppingCart;
+    public static ArrayList<Item> getShoppingCart() {
+        return Store.shoppingCart;
     }
 
-    public void setShoppingCart(ArrayList<Item> shoppingCart) {
-        this.shoppingCart = shoppingCart;
+    public static void setShoppingCart(ArrayList<Item> shoppingCart) {
+        Store.shoppingCart = shoppingCart;
+    }
+
+    public static void addMultipleItemsToShoppingCart(Item[] item){
+        for (Item items : item) {
+            Store.shoppingCart.add(items);
+        }
     }
 
     public int getTotal() {
@@ -50,7 +55,7 @@ public class Store implements Serializable{
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.shoppingCart);
+        hash = 97 * hash + Objects.hashCode(Store.shoppingCart);
         hash = 97 * hash + this.total;
         return hash;
     }
@@ -70,7 +75,7 @@ public class Store implements Serializable{
         if (this.total != other.total) {
             return false;
         }
-        if (!Objects.equals(this.shoppingCart, other.shoppingCart)) {
+        if (!Objects.equals(Store.shoppingCart, Store.shoppingCart)) {
             return false;
         }
         return true;

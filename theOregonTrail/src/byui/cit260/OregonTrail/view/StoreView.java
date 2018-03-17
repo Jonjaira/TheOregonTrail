@@ -6,8 +6,11 @@
 package byui.cit260.OregonTrail.view;
 
 import byui.cit260.OregonTrail.control.StoreControl;
-import java.util.Scanner;
 import byui.cit260.OregonTrail.model.Item;
+import byui.cit260.OregonTrail.model.Store;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import javaapplication1.JavaApplication1;
 
 /**
@@ -34,9 +37,10 @@ public class StoreView extends View {
             +"\n10- " + Item.Tools.getName() + " ----------- " + Item.Tools.getPrice()
             +"\n11- " + Item.metalWheel.getName()+ " ----- " + Item.metalWheel.getPrice()
             +"\n12- " + Item.woodWheel.getName() + " ------ " + Item.woodWheel.getPrice()
+            +"\nV - View Shopping Cart"
             +"\nE - Exit"
             +"\nAllowance Available: " + JavaApplication1.getPlayer().getCharacter().getAllowance()
-            +"\n\nPlease select your item: ");
+            +"\n\nPlease select your option: ");
 }
         
   @Override  
@@ -82,7 +86,10 @@ public class StoreView extends View {
                 break;
             case "12":
                 purchaseItem(Item.woodWheel);
-                break;    
+                break;
+            case "V":
+                viewShoppingCart();
+                break;
             case "E":
                 return true;
             default:
@@ -93,21 +100,45 @@ public class StoreView extends View {
     }
 
     private void purchaseItem(Item item) {
+        double remainingAllowance;
         PurchaseView purchaseView = new PurchaseView();
+
         System.out.println("You selected " + item.getName());
         purchaseView.display();
-        double remainingAllowance;
         
-        remainingAllowance = StoreControl.buyItem(JavaApplication1.getPlayer().getCharacter().getAllowance(), item);
+        remainingAllowance = StoreControl.buyItems(JavaApplication1.getPlayer().getCharacter().getAllowance(), item);
         
         if(remainingAllowance != -1){
                JavaApplication1.getPlayer().getCharacter().setAllowance(remainingAllowance);
-               int quantity = StoreControl.getQuantity();
-               
-               for (int i = 0; i < quantity; i++) {
-                   JavaApplication1.getPlayer().getInventory().addItemToInventory(item);
+        }
+    }
+    
+    private void viewShoppingCart() {
+        int[] itemsQuantities = new int[Item.values().length];
+        double[] totals = new double[Item.values().length];
+        ArrayList<Item> items = Store.getShoppingCart();
+        
+        for (Item item : items) {
+            for (int i = 0; i < Item.values().length; i++) {
+                if (item == Item.values()[i]) {
+                    itemsQuantities[i]++;
+                    totals[i] += Item.values()[i].getPrice();
+                    break;
+                }
             }
         }
-     
+        
+        System.out.print("\n\n Shopping Cart\n\n");
+        System.out.println("Qty     Item            Cost      Total");
+        
+        for (int i = 0; i < Item.values().length; i++) {
+            if (itemsQuantities[i] != 0) {
+                System.out.printf("%3s     %-15s %-5f %-5f\n",
+                                  itemsQuantities[i],
+                                  Item.values()[i].getName(),
+                                  Item.values()[i].getPrice(),
+                                  totals[i]);
+            }
+        }
     }
 }

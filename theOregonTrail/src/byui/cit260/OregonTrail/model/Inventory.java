@@ -6,6 +6,7 @@
 package byui.cit260.OregonTrail.model;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -32,6 +33,10 @@ public class Inventory implements Serializable {
 
     public void addItemToInventory(Item item){
         this.inventory.add(item);
+    }
+
+    public void addMultipleItemsToInventory(Item[] item){
+        this.inventory.addAll(Arrays.asList(item));
     }
 
     public Item getItemFromInventory(Item item){

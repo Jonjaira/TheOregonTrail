@@ -5,6 +5,8 @@
  */
 package byui.cit260.OregonTrail.control;
 import byui.cit260.OregonTrail.model.Item;
+import byui.cit260.OregonTrail.model.Store;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,7 +16,7 @@ public class StoreControl {
     
     private static int quantity;
    
-    public static double buyItem( double totalAvailable, Item item){
+    public static double buyItems( double totalAvailable, Item item){
 
         if (totalAvailable < 0 || totalAvailable > 900){
             return -1;
@@ -34,6 +36,8 @@ public class StoreControl {
 
         remainderAvailable = totalAvailable - ((item.getPrice() * StoreControl.quantity) *salesTax);
         
+        addPurchasedItemsToShoppingCart(item, quantity);
+        
         return remainderAvailable;
     }
     
@@ -43,5 +47,15 @@ public class StoreControl {
     
     public static void setQuantity(int quantity) {
         StoreControl.quantity = quantity;
+    }
+    
+    private static void addPurchasedItemsToShoppingCart(Item item, int quantity) {
+        Item[] purchasedItems = new Item[quantity];
+        
+        for (int i = 0; i < quantity; i++) {
+            purchasedItems[i] = item;
+        }
+        
+        Store.addMultipleItemsToShoppingCart(purchasedItems);
     }
 }

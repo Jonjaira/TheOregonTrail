@@ -19,7 +19,7 @@ public class StoreControlTest {
     }
 
     /**
-     * Test of buyItem method, of class StoreControl.
+     * Test of buyItems method, of class StoreControl.
      */
     @Test
     public void testBuyItem() {
@@ -29,7 +29,7 @@ public class StoreControlTest {
         Item item = Item.metalWheel;
         StoreControl.setQuantity(2);
         double expResult = 698.8;
-        double result = StoreControl.buyItem(totalAvailable, item);
+        double result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);
         
         //Test case 2
@@ -38,7 +38,7 @@ public class StoreControlTest {
         item = Item.metalWheel;
         StoreControl.setQuantity(2);
         expResult = -1;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);
         
         //Test Case 3
@@ -47,7 +47,7 @@ public class StoreControlTest {
         item = Item.metalWheel;
         StoreControl.setQuantity(2);
         expResult = -1;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);
         
         //Test Case 4
@@ -56,7 +56,7 @@ public class StoreControlTest {
         item = Item.woodWheel;
         StoreControl.setQuantity(2);
         expResult = -1;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);
         
         //Test Case 5
@@ -65,7 +65,7 @@ public class StoreControlTest {
         item = Item.StarterPackage;
         StoreControl.setQuantity(2);
         expResult = -1;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);
  
         System.out.println("buyItem");
@@ -73,7 +73,7 @@ public class StoreControlTest {
         item = Item.metalWheel;
         StoreControl.setQuantity(-5);
         expResult = -1;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);
         
         //Test Case 6
@@ -82,7 +82,7 @@ public class StoreControlTest {
         item = Item.metalWheel;
         StoreControl.setQuantity(30);
         expResult = -1;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);
         
         //Test Case 7
@@ -91,7 +91,7 @@ public class StoreControlTest {
         item = Item.metalWheel;
         StoreControl.setQuantity(2);
         expResult = -1;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);
         
         //Test Case 8
@@ -100,7 +100,7 @@ public class StoreControlTest {
         item = Item.metalWheel;
         StoreControl.setQuantity(2);
         expResult = -21.2;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0001);
         
         //Test Case 9
@@ -109,7 +109,7 @@ public class StoreControlTest {
         item = Item.metalWheel;
         StoreControl.setQuantity(2);
         expResult = 878.8;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);  
         
         //Test Case 10
@@ -118,7 +118,7 @@ public class StoreControlTest {
         item = Item.Food;
         StoreControl.setQuantity(2);
         expResult = 719.576;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);        
         
         //Test Case 11
@@ -127,7 +127,7 @@ public class StoreControlTest {
         item = Item.Tools;
         StoreControl.setQuantity(2);
         expResult = -128;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);        
         
         //Test Case 12
@@ -136,7 +136,7 @@ public class StoreControlTest {
         item = Item.metalWheel;
         StoreControl.setQuantity(1);
         expResult = 709.4;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);        
         
         //Test Case 13
@@ -145,7 +145,7 @@ public class StoreControlTest {
         item = Item.metalWheel;
         StoreControl.setQuantity(20);
         expResult = 508;
-        result = StoreControl.buyItem(totalAvailable, item);
+        result = StoreControl.buyItems(totalAvailable, item);
         assertEquals(expResult, result, 0.0);        
         
         
