@@ -38,6 +38,7 @@ public class StoreView extends View {
             +"\n11- " + Item.metalWheel.getName()+ " ----- " + Item.metalWheel.getPrice()
             +"\n12- " + Item.woodWheel.getName() + " ------ " + Item.woodWheel.getPrice()
             +"\nV - View Shopping Cart"
+            +"\nL - Sort List Price"
             +"\nE - Exit"
             +"\nAllowance Available: " + JavaApplication1.getPlayer().getCharacter().getAllowance()
             +"\n\nPlease select your option: ");
@@ -90,6 +91,9 @@ public class StoreView extends View {
             case "V":
                 viewShoppingCart();
                 break;
+            case "L":
+                sortListItemPrice();
+                break;
             case "E":
                 return true;
             default:
@@ -141,4 +145,43 @@ public class StoreView extends View {
             }
         }
     }
+    
+    public void sortListItemPrice (){
+//        double[] list = new double[Item.values().length];
+//        double[] upDownList = new double[Item.values().length];
+        
+        for (int i = 0; i<Item.values().length ; i++)
+        {
+        System.out.print("\n i=" +i+"\n ");
+//            int index = i;
+//            for (int j = i+1; j<Item.values().length; j++ ){
+            for (int j = 0; j<Item.values().length && i != j; j++ ){
+        System.out.print("\n J " +j+" I = "+ i);
+                if (Item.values()[j].getPrice() < Item.values()[i].getPrice()){
+                System.out.print("\n j=i+1" +Item.values()[j].getPrice()+" < "+ Item.values()[i].getPrice());
+//                            index = j;
+        //                System.out.print("\n"+Item.values()[index].getName()+" "+Item.values()[index].getPrice());
+                    Item upDownList = Item.values()[i];
+                                     System.out.print("\n"+upDownList);
+                    Item.values()[i] = Item.values()[j];
+                                     System.out.print("\n"+Item.values()[i]);
+                    Item.values()[j] = upDownList;
+                                     System.out.print("\n"+Item.values()[j]+"\n");
+                System.out.print("\n"+ i +"  "+ Item.values()[i]+" "+Item.values()[j]/*+ Item.values()[i].getName()+"  "+Item.values()[i].getPrice()*/);
+                }
+                
+                }
+//            System.out.println("\n"+Item.values()[i].getPrice());
+            for (Item value : Item.values()) {
+                System.out.print("\n" + value.getName() + "  " + value.getPrice());
+            }
+        }
+        
+//        for (Item item : Item.values()) {
+//            System.out.print("\n" + item.getName()+"  "+item.getPrice());
+//                
+//                }
+        
+    }
+    
 }
