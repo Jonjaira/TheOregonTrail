@@ -5,14 +5,18 @@
  */
 package byui.cit260.OregonTrail.control;
 
+import byui.cit260.OregonTrail.exceptions.MapControlException;
+import byui.cit260.OregonTrail.model.Game;
 import byui.cit260.OregonTrail.model.GenericScene;
 import byui.cit260.OregonTrail.model.Location;
 import byui.cit260.OregonTrail.model.Map;
+import byui.cit260.OregonTrail.model.Player;
 import byui.cit260.OregonTrail.model.Question;
 import byui.cit260.OregonTrail.model.QuestionScene;
 import byui.cit260.OregonTrail.model.QuestionType;
 import byui.cit260.OregonTrail.model.Scene;
 import byui.cit260.OregonTrail.model.SceneType;
+import javaapplication1.JavaApplication1;
 
 /**
  *
@@ -20,7 +24,8 @@ import byui.cit260.OregonTrail.model.SceneType;
  */
 public class MapControl {
     public static Map createMap( int noOfRows,
-                                 int noOfColumns) {
+                                 int noOfColumns)
+        throws MapControlException{
         Map map = new Map(noOfColumns, noOfColumns);
 
         Location locations[][] = createLocations(noOfRows, noOfColumns);
@@ -36,9 +41,14 @@ public class MapControl {
         return map;
     }
     
-    private static Location[][] createLocations(int rows, int columns) {
-        if (rows < 1 || columns < 1) {
-            return null;
+    private static Location[][] createLocations(int rows, int columns)
+        throws MapControlException{
+        if (rows < 1) {
+            throw new MapControlException("Rows can't be less than 1");
+        }
+        
+        if (columns < 1) {
+            throw new MapControlException("Columns can't be less than 1");
         }
         
         Location locations[][] = new Location[rows][columns];
@@ -166,5 +176,31 @@ public class MapControl {
         locations[0][0].setName("END");
         locations[4][4].setScene(scenes[SceneType.finish.ordinal()]);
         locations[0][0].setName("END");
+    }
+    
+    public static Location moveActor(Player actor, int newRow, int newColumn)
+        throws MapControlException{
+        
+        if (actor == null) {
+            throw new MapControlException("Player is null!");
+        }
+        
+        Map map = JavaApplication1.getCurrentGame().getMap();
+        int rowsInMap = map.getRowCount();
+        int colsInMap = map.getColumnCount();
+        
+        if ((newRow < 1) || (newRow > rowsInMap)) {
+            throw new MapControlException("Bad number of rows!");
+        }
+        
+        if ((newColumn < 1) || (newColumn > colsInMap)) {
+            throw new MapControlException("Bad number of Columns!");
+        }
+        
+        Location newLocation = map.getLocation(newRow, newColumn);
+        
+        actor.setCurrentLocation(newLocation);
+        
+        return newLocation;
     }
 }

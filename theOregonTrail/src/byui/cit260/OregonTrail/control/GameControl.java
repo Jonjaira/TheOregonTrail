@@ -5,10 +5,11 @@
  */
 package byui.cit260.OregonTrail.control;
 
+import byui.cit260.OregonTrail.exceptions.GameControlException;
+import byui.cit260.OregonTrail.exceptions.MapControlException;
 import byui.cit260.OregonTrail.model.Player;
 import byui.cit260.OregonTrail.model.Character;
 import byui.cit260.OregonTrail.model.Game;
-import byui.cit260.OregonTrail.model.Map;
 import byui.cit260.OregonTrail.view.CompanyNamesView;
 import javaapplication1.JavaApplication1;
 
@@ -20,12 +21,13 @@ public class GameControl {
     
     private static String actor;
     
-    public static double calcTotalAvailable( double allowance) {
+    public static double calcTotalAvailable( double allowance)
+        throws GameControlException {
 
         if (allowance == 600 || allowance == 800 || allowance == 1000){
             return allowance - allowance * .1;
         }
-            return -1;
+            throw new GameControlException("Invalid Allowance");
     }
 
     /*
@@ -50,7 +52,8 @@ public class GameControl {
         return new Player();
     }
     
-    public static int createNewGame(Player player){
+    public static void createNewGame(Player player)
+        throws GameControlException, MapControlException{
     /*if (player == null)
     return -1
     game = create a new Game object
@@ -76,7 +79,7 @@ public class GameControl {
         String[] actors = new String[4];
 
         if (player == null)
-            return -1;
+            throw new GameControlException("Player is null");
         
         Game game = new Game();
         game.setPlayer(player);
@@ -93,8 +96,6 @@ public class GameControl {
         JavaApplication1.getCurrentGame().getPlayer().getCompany().setPeople(actors);
         
         JavaApplication1.getCurrentGame().setMap(MapControl.createMap(5, 5));
-        
-        return 1;
     }
     
     public static void setActor(String personage){

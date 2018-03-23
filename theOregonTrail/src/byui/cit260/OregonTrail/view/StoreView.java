@@ -6,6 +6,7 @@
 package byui.cit260.OregonTrail.view;
 
 import byui.cit260.OregonTrail.control.StoreControl;
+import byui.cit260.OregonTrail.exceptions.StoreControlException;
 import byui.cit260.OregonTrail.model.Item;
 import byui.cit260.OregonTrail.model.Store;
 import java.util.ArrayList;
@@ -53,46 +54,146 @@ public class StoreView extends View {
         switch(menuItem)
         {
             case "1":
-                purchaseItem(Item.Ammunition);
+                try
+                { 
+                    purchaseItem(Item.Ammunition);
+                }
+                catch (StoreControlException e)
+                {
+                    System.out.println(e.getMessage());
+                    return false;
+                }
                 break;
             case "2":
+                try
+                {
                 purchaseItem(Item.AmmunitionBox);
+                }
+                catch (StoreControlException e)
+                {
+                    System.out.println(e.getMessage());
+                    return false;
+                }
                 break;
             case "3":
+                try
+                {
                 purchaseItem(Item.Axle);
+                }
+                catch (StoreControlException e)
+                {
+                    System.out.println(e.getMessage());
+                    return false;
+                }    
                 break;
             case "4":
+                try
+                {    
                 purchaseItem(Item.Clothing);
+                }
+                catch (StoreControlException e)
+                {
+                    System.out.println(e.getMessage());
+                    return false;
+                }
                 break;
             case "5":
+                try
+                {
                 purchaseItem(Item.FirstAidKit);
-                break;
+                }
+                catch (StoreControlException e)
+                {
+                    System.out.println(e.getMessage());
+                    return false;
+                }    
+                break;           
             case "6":
+                try
+                {
                 purchaseItem(Item.Food);
+                }
+                catch (StoreControlException e)
+                {
+                    System.out.println(e.getMessage());
+                    return false;
+                }   
                 break;
             case "7":
+                try
+                {
                 purchaseItem(Item.Oxen);
+                }
+                catch (StoreControlException e)
+                {
+                    System.out.println(e.getMessage());
+                    return false;
+                }    
                 break;
             case "8":
+                try
+                {
                 purchaseItem(Item.StarterPackage);
+                }
+                catch (StoreControlException e)
+                {
+                    System.out.println(e.getMessage());
+                    return false;
+                }  
                 break;
             case "9":
+                try
+                {    
                 purchaseItem(Item.Tongue);
+                }
+                catch (StoreControlException e)
+                {
+                    System.out.println(e.getMessage());
+                    return false;
+                }  
                 break;
             case "10":
+                try
+                {
                 purchaseItem(Item.Tools);
+                }
+                catch (StoreControlException e)
+                {
+                    System.out.println(e.getMessage());
+                    return false;
+                }  
                 break;
             case "11":
+                try
+                {
                 purchaseItem(Item.metalWheel);
+                }
+                catch (StoreControlException e)
+                {
+                    System.out.println(e.getMessage());
+                    return false;
+                }  
                 break;
             case "12":
+                try
+                {    
                 purchaseItem(Item.woodWheel);
+                }
+                catch (StoreControlException e)
+                {
+                    System.out.println(e.getMessage());
+                    return false;
+                }  
                 break;
             case "V":
+               
                 viewShoppingCart();
+                
                 break;
             case "L":
+               
                 sortListItemPrice();
+               
                 break;
             case "E":
                 return true;
@@ -100,10 +201,10 @@ public class StoreView extends View {
                 System.out.println("Invalid menu item.");
         }
      
-        return false;
+        return true;
     }
 
-    private void purchaseItem(Item item) {
+    private void purchaseItem(Item item) throws StoreControlException {
         double remainingAllowance;
         PurchaseView purchaseView = new PurchaseView();
 

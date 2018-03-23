@@ -13,16 +13,12 @@ public class Map implements Serializable{
     // Point instead of an int. I need guidance from the teacher for this one.
     
     private int rowCount;
-    private int currentRow; 
     private int columnCount; 
-    private int currentColum;
     private Location locations[][];
 
     public Map(int rowCount, int columnCount) {
         this.rowCount = rowCount;
-        this.currentRow = 0;
         this.columnCount = columnCount;
-        this.currentColum = 0;
     }
 
     public int getRowCount() {
@@ -33,28 +29,12 @@ public class Map implements Serializable{
         this.rowCount = rowCount;
     }
 
-    public int getCurrentRow() {
-        return currentRow;
-    }
-
-    public void setCurrentRow(int currentRow) {
-        this.currentRow = currentRow;
-    }
-
     public int getColumnCount() {
         return columnCount;
     }
 
     public void setColumnCount(int columnCount) {
         this.columnCount = columnCount;
-    }
-
-    public int getCurrentColum() {
-        return currentColum;
-    }
-
-    public void setCurrentColum(int currentColum) {
-        this.currentColum = currentColum;
     }
 
     public Location[][] getLocations() {
@@ -64,19 +44,21 @@ public class Map implements Serializable{
     public void setLocations(Location[][] locations) {
         this.locations = locations;
     }
-
+    
+    public Location getLocation (int row, int col) {
+        return this.locations[row][col];
+    }
+    
     @Override
     public String toString() {
-        return "Map{" + "rowCount=" + rowCount + ", currentRow=" + currentRow + ", columnCount=" + columnCount + ", currentColum=" + currentColum + '}';
+        return "Map{" + "rowCount=" + rowCount + ", columnCount=" + columnCount + '}';
     }
     
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 29 * hash + this.rowCount;
-        hash = 29 * hash + this.currentRow;
         hash = 29 * hash + this.columnCount;
-        hash = 29 * hash + this.currentColum;
         return hash;
     }
 
@@ -95,13 +77,7 @@ public class Map implements Serializable{
         if (this.rowCount != other.rowCount) {
             return false;
         }
-        if (this.currentRow != other.currentRow) {
-            return false;
-        }
         if (this.columnCount != other.columnCount) {
-            return false;
-        }
-        if (this.currentColum != other.currentColum) {
             return false;
         }
         return true;
