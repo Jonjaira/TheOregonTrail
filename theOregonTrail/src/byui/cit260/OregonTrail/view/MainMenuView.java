@@ -22,6 +22,7 @@ public class MainMenuView extends View {
     +"\nS - Show the store"
     +"\nM - Show the Game Menu"
     +"\nW - Work Options"
+    +"\nT - Status Wagon"
     +"\nE - Exit"
     +"\n\nEnter Selection Below: ");
     }
@@ -49,6 +50,8 @@ public class MainMenuView extends View {
                 showGameMenu();
             case "W":
                 workOptions();
+            case "T":
+                statusWagon();
                 break;
             case "E":
                 return true;
@@ -93,5 +96,10 @@ public class MainMenuView extends View {
     private void workOptions() {
         WorkingMenuView workingMenuView = new WorkingMenuView();
         workingMenuView.display();
+    }
+
+    private void statusWagon() {
+        StatusWagonView statusWagonView = new StatusWagonView();
+        statusWagonView.display();
     }
 }
