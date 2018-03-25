@@ -6,7 +6,6 @@
 package byui.cit260.OregonTrail.view;
 
 import byui.cit260.OregonTrail.control.StoreControl;
-import java.util.Scanner;
 
 /**
  *
@@ -19,9 +18,18 @@ public class PurchaseView extends View {
        
     @Override
     public boolean doAction(String inputs) {
-        int quantity = Integer.parseInt(inputs);
+        int quantity = 0;
+        
+        try {
+            quantity = Integer.parseInt(inputs);
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Non-numeric values not allowed!\n");
+            return false;
+        }
+        
         StoreControl.setQuantity(quantity);
         
         return true;
-          }
+    }
 }
