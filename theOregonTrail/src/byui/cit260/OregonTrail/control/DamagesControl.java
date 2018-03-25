@@ -5,24 +5,29 @@
  */
 package byui.cit260.OregonTrail.control;
 
+import byui.cit260.OregonTrial.exceptions.DamagesControlException;
+
 /**
  *
  * @author Diego Cutode
  */
 public class DamagesControl {
     
-    public static double calcPercentOfDamages (double km, int crossOfRiver, int storm){
+    public static double calcPercentOfDamages (double km, int crossOfRiver, int storm) throws DamagesControlException{
         
         if (km <0 || km >2000){
-            return -1;
+//            return -1;
+        throw new DamagesControlException("Is too much Km");
         }
 
         if (crossOfRiver < 0 ){
-            return -1;
+//            return -1;
+        throw new DamagesControlException("You enter a negative value, Try again");
          }
         
         if (storm < 0 ){
-	return -1;
+//	return -1;
+        throw new DamagesControlException("You enter a negative value, Try again");
         }
 	
         double firstDamage = (km / 35);
@@ -35,7 +40,7 @@ public class DamagesControl {
 
     }
     
-    
+   /* 
     public static double[] sortListItemPrice (double[] list){
         
         for (int i = 0; i<list.length -1; i++)
@@ -49,5 +54,5 @@ public class DamagesControl {
             list[i] = smallerNuber;
         }
         return list;
-    }
+    }*/
 }
