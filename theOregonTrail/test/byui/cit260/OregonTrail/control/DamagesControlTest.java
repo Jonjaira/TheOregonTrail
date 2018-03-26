@@ -5,6 +5,7 @@
  */
 package byui.cit260.OregonTrail.control;
 
+import byui.cit260.OregonTrial.exceptions.DamagesControlException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -19,9 +20,10 @@ public class DamagesControlTest {
 
     /**
      * Test of calcPercentOfDamages method, of class DamagesControl.
+     * @throws byui.cit260.OregonTrial.exceptions.DamagesControlException
      */
     @Test
-    public void testCalcPercentOfDamages() {
+    public void testCalcPercentOfDamages() throws DamagesControlException {
         // Test 1
         System.out.println("calcPercentOfDamages");
         double km = 1257;
