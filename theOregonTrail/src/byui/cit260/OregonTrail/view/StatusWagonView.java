@@ -35,11 +35,10 @@ public class StatusWagonView extends View{
             double calcPercentOfDamages = DamagesControl.calcPercentOfDamages(km, crossOfRiver, storm);
             System.out.println("The status of your Wagon is : "+ calcPercentOfDamages + "%");
         } catch (DamagesControlException ex) {
-            Logger.getLogger(StatusWagonView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Try again to enter Km");
+            return false;
         }
        
-//        GameControl.setActor(value);
-//        throw new UnsupportedOperationException("Not supported yet.");
     return true;
     }
     
