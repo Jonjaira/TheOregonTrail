@@ -30,15 +30,17 @@ public class GameMenuView extends View {
         switch(menuItem)
         {
             case "V":
-                 displayMap();
+                displayMap();
                 break;
+            case "M":
+                movePlayer();
             case "Q":
                 return true;
             default:
                 System.out.println("Invalid menu item.");
         }
         
-        return false;
+        return true;
     }    
 
     private void displayMap() {
@@ -80,5 +82,10 @@ public class GameMenuView extends View {
             System.out.println("|");
             System.out.println("  +-----+-----+-----+-----+-----+");
         }
+    }
+    
+    private void movePlayer() {
+        MoveActorView moveActorView = new MoveActorView();
+        moveActorView.display();
     }
 }

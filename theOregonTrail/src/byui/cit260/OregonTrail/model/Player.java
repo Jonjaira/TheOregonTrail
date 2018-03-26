@@ -20,10 +20,12 @@ public class Player implements Serializable{
     private Game game;
     private Company company;
     private Inventory inventory;
+    private Location currentLocation;
 
     public Player() {
         this.company = new Company();
         this.score = 0;
+        this.currentLocation = new Location(0, 0, true);
     }
 
     public Game getGame() {
@@ -56,6 +58,14 @@ public class Player implements Serializable{
 
     public void setScore(double score) {
         this.score = score;
+    }
+
+    public Location getCurrentLocation() {
+        return this.currentLocation;
+    }
+
+    public void setCurrentLocation(Location newLocation) {
+        this.currentLocation = newLocation;
     }
 
       @Override
