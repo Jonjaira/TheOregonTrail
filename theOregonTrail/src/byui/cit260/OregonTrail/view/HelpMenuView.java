@@ -31,28 +31,29 @@ public class HelpMenuView extends View{
         switch(menuItem)
         {
             case "G":
-                System.out.println("\nThe goal of the game is to take your"
+                this.console.println("\nThe goal of the game is to take your"
                         + " company to oregon.");
                 break;
             case "M":
-                System.out.println("\nTo move just press the arrow keys.");
+                this.console.println("\nTo move just press the arrow keys.");
                 break;
             case "E":
-                System.out.println("\nGives the estimate number of resources"
+                this.console.println("\nGives the estimate number of resources"
                         + "left for your company.");
                 break;
             case "H":
-                System.out.println("\nAllows to harvest for resources you may"
+                this.console.println("\nAllows to harvest for resources you may"
                         + "need.");
                 break;
             case "D":
-                System.out.println("\nAllows you to take resources to the"
+                this.console.println("\nAllows you to take resources to the"
                         + "warehouse.");
                 break;
             case "Q":
                 return true;
             default:
-                System.out.println("Invalid menu item.");
+                ErrorView.display(this.getClass().getName(),
+                "Invalid Menu Item");
         }
         
         return false;

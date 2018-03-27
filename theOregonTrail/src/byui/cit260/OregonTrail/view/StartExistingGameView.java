@@ -9,9 +9,14 @@ package byui.cit260.OregonTrail.view;
  *
  * @author jonja
  */
-public class StartExistingGameView {
+public class StartExistingGameView extends View {
     
     public void displayStartExistingGameView() {
-        System.out.println("*** displayStartExistingGameView() called ***");
+        this.console.println("*** displayStartExistingGameView() called ***");
+    }
+
+    @Override
+    public boolean doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -20,11 +20,11 @@ public class CharacterNameView extends View {
     public boolean doAction(String value) {
         JavaApplication1.getPlayer().getCharacter().setName(value);
                
-        System.out.println("\n================================================= ");
-        System.out.print("Welcome to the game " + JavaApplication1.getPlayer().getCharacter().getName());
-        System.out.println(" the " + JavaApplication1.getPlayer().getCharacter().getType());
-        System.out.println("We hope you have a lot of fun!");
-        System.out.println("================================================= ");
+        this.console.println("\n================================================= ");
+        this.console.print("Welcome to the game " + JavaApplication1.getPlayer().getCharacter().getName());
+        this.console.println(" the " + JavaApplication1.getPlayer().getCharacter().getType());
+        this.console.println("We hope you have a lot of fun!");
+        this.console.println("================================================= ");
         
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.display();

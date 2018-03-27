@@ -5,14 +5,22 @@
  */
 package byui.cit260.OregonTrail.view;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import javaapplication1.JavaApplication1;
 
 /**
  *
  * @author jonja
  */
 public abstract class View implements ViewInterface {
+    private String message;
+    protected final BufferedReader keyboard = JavaApplication1.getInFile();
+    protected final PrintWriter console = JavaApplication1.getOutFile();
     protected  String displayMessage;
+    
     
     public View(){ 
 }
@@ -38,28 +46,30 @@ public abstract class View implements ViewInterface {
     @Override
      public String getInput() {
         
-        Scanner keyboard = new Scanner (System.in);
-        boolean valid = false;
-        String value = null;
         
+        boolean valid = false;
+        String selection = null;
+        try{
         //While valid name has not been retrieved 
         while (!valid){
             
-            System.out.println("\n" + this.displayMessage);
+            this.console.println("\n" + this.displayMessage);
             
             //Get the value entered from the keyboard
-            value = keyboard.nextLine();
-            value = value.trim();
+            selection = this.keyboard.readLine();
+            selection = selection.trim();
             
-            if(value.length()<1){ //Blank value entered
+            if(selection.length()<1){ //Blank value entered
                 System.out.println("\n*** You must enter a value***");
                 continue;
             }
             
             break;
         }
-        
-        return value; //Return the name
+        } catch (IOException e){
+            this.console.println("Error reading input: " + e.getMessage());
+        }
+        return selection; //Return the name
      }
 }
         

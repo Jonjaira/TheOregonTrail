@@ -60,7 +60,7 @@ public class StoreView extends View {
                 }
                 catch (StoreControlException e)
                 {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }
                 break;
@@ -71,7 +71,7 @@ public class StoreView extends View {
                 }
                 catch (StoreControlException e)
                 {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }
                 break;
@@ -82,7 +82,7 @@ public class StoreView extends View {
                 }
                 catch (StoreControlException e)
                 {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }    
                 break;
@@ -93,7 +93,7 @@ public class StoreView extends View {
                 }
                 catch (StoreControlException e)
                 {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }
                 break;
@@ -104,7 +104,7 @@ public class StoreView extends View {
                 }
                 catch (StoreControlException e)
                 {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }    
                 break;           
@@ -115,7 +115,7 @@ public class StoreView extends View {
                 }
                 catch (StoreControlException e)
                 {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }   
                 break;
@@ -126,7 +126,7 @@ public class StoreView extends View {
                 }
                 catch (StoreControlException e)
                 {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }    
                 break;
@@ -137,7 +137,7 @@ public class StoreView extends View {
                 }
                 catch (StoreControlException e)
                 {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }  
                 break;
@@ -148,7 +148,7 @@ public class StoreView extends View {
                 }
                 catch (StoreControlException e)
                 {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }  
                 break;
@@ -159,7 +159,7 @@ public class StoreView extends View {
                 }
                 catch (StoreControlException e)
                 {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }  
                 break;
@@ -170,7 +170,7 @@ public class StoreView extends View {
                 }
                 catch (StoreControlException e)
                 {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }  
                 break;
@@ -181,7 +181,7 @@ public class StoreView extends View {
                 }
                 catch (StoreControlException e)
                 {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }  
                 break;
@@ -198,7 +198,8 @@ public class StoreView extends View {
             case "E":
                 return true;
             default:
-                System.out.println("Invalid menu item.");
+                ErrorView.display(this.getClass().getName(),
+                "Invalid Menu Item");
         }
      
         return true;
@@ -208,7 +209,7 @@ public class StoreView extends View {
         double remainingAllowance;
         PurchaseView purchaseView = new PurchaseView();
 
-        System.out.println("You selected " + item.getName());
+        this.console.println("You selected " + item.getName());
         purchaseView.display();
         
         remainingAllowance = StoreControl.buyItems(JavaApplication1.getPlayer().getCharacter().getAllowance(), item);
@@ -233,8 +234,8 @@ public class StoreView extends View {
             }
         }
         
-        System.out.print("\n\n Shopping Cart\n\n");
-        System.out.println("Qty     Item            Cost      Total");
+        this.console.print("\n\n Shopping Cart\n\n");
+        this.console.println("Qty     Item            Cost      Total");
         
         for (int i = 0; i < Item.values().length; i++) {
             if (itemsQuantities[i] != 0) {
@@ -253,28 +254,28 @@ public class StoreView extends View {
         
         for (int i = 0; i<Item.values().length ; i++)
         {
-        System.out.print("\n i=" +i+"\n ");
+        this.console.print("\n i=" +i+"\n ");
 //            int index = i;
 //            for (int j = i+1; j<Item.values().length; j++ ){
             for (int j = 0; j<Item.values().length && i != j; j++ ){
-        System.out.print("\n J " +j+" I = "+ i);
+        this.console.print("\n J " +j+" I = "+ i);
                 if (Item.values()[j].getPrice() < Item.values()[i].getPrice()){
-                System.out.print("\n j=i+1" +Item.values()[j].getPrice()+" < "+ Item.values()[i].getPrice());
+                this.console.print("\n j=i+1" +Item.values()[j].getPrice()+" < "+ Item.values()[i].getPrice());
 //                            index = j;
         //                System.out.print("\n"+Item.values()[index].getName()+" "+Item.values()[index].getPrice());
                     Item upDownList = Item.values()[i];
-                                     System.out.print("\n"+upDownList);
+                                     this.console.print("\n"+upDownList);
                     Item.values()[i] = Item.values()[j];
-                                     System.out.print("\n"+Item.values()[i]);
+                                     this.console.print("\n"+Item.values()[i]);
                     Item.values()[j] = upDownList;
-                                     System.out.print("\n"+Item.values()[j]+"\n");
-                System.out.print("\n"+ i +"  "+ Item.values()[i]+" "+Item.values()[j]/*+ Item.values()[i].getName()+"  "+Item.values()[i].getPrice()*/);
+                                     this.console.print("\n"+Item.values()[j]+"\n");
+                this.console.print("\n"+ i +"  "+ Item.values()[i]+" "+Item.values()[j]/*+ Item.values()[i].getName()+"  "+Item.values()[i].getPrice()*/);
                 }
                 
                 }
 //            System.out.println("\n"+Item.values()[i].getPrice());
             for (Item value : Item.values()) {
-                System.out.print("\n" + value.getName() + "  " + value.getPrice());
+                this.console.print("\n" + value.getName() + "  " + value.getPrice());
             }
         }
         

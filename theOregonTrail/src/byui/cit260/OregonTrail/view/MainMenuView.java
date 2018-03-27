@@ -63,7 +63,8 @@ public class MainMenuView extends View {
             case "E":
                 return true;
             default:
-                System.out.println("Invalid menu item.");
+                ErrorView.display(this.getClass().getName(),
+                "Invalid Menu Item");
         }
         
         return false;
@@ -88,12 +89,13 @@ public class MainMenuView extends View {
         StoreView storeView = new StoreView();
         storeView.display();
         
-        System.out.println("Remaining Allowance: " + JavaApplication1.getPlayer().getCharacter().getAllowance());
+        this.console.println("Remaining Allowance: " + JavaApplication1.getPlayer().getCharacter().getAllowance());
     }
     
     private void showGameMenu() {
-        if (JavaApplication1.getCurrentGame() == null) {
-            System.out.println("\n\n\n!!! No New Game Has Started Yet!!!");
+        if (JavaApplication1.getCurrentGame() == null) {            
+            ErrorView.display(this.getClass().getName(),
+                "\n\n\n!!! No New Game Has Started Yet!!!");
         }
         else {
             GameMenuView gameMenuView = new GameMenuView();

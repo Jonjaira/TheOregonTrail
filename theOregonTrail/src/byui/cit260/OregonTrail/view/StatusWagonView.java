@@ -33,9 +33,9 @@ public class StatusWagonView extends View{
         
         try {
             double calcPercentOfDamages = DamagesControl.calcPercentOfDamages(km, crossOfRiver, storm);
-            System.out.println("The status of your Wagon is : "+ calcPercentOfDamages + "%");
+            this.console.println("The status of your Wagon is : "+ calcPercentOfDamages + "%");
         } catch (DamagesControlException ex) {
-            System.out.println("Try again to enter Km");
+            this.console.println("Try again to enter Km");
             return false;
         }
        

@@ -37,10 +37,12 @@ public class GameMenuView extends View {
             case "Q":
                 return true;
             default:
-                System.out.println("Invalid menu item.");
+                ErrorView.display(this.getClass().getName(),
+                "Invalid Menu Item");
         }
         
         return true;
+ 
     }    
 
     private void displayMap() {
@@ -48,7 +50,7 @@ public class GameMenuView extends View {
         Location[][] locations = game.getMap().getLocations();
         Location location;
         
-        System.out.println("\n\n\n  The Land Where You Will Travel");
+        this.console.println("\n\n\n  The Land Where You Will Travel");
         //                     0     1     2     3     4
         //                  +-----+-----+-----+-----+-----+
         //                0 |     |     |     |     |     |
@@ -61,9 +63,9 @@ public class GameMenuView extends View {
         //                  +-----+-----+-----+-----+-----+
         //                4 |     |     |     |     |     |
         //                  +-----+-----+-----+-----+-----+
-        System.out.println("                                 ");
-        System.out.println("     0     1     2     3     4   ");
-        System.out.println("  +-----+-----+-----+-----+-----+");
+        this.console.println("                                 ");
+        this.console.println("     0     1     2     3     4   ");
+        this.console.println("  +-----+-----+-----+-----+-----+");
         
         for (int rowIndex = 0; rowIndex < game.getMap().getRowCount(); rowIndex++) {
             System.out.print(rowIndex + " ");
@@ -72,15 +74,15 @@ public class GameMenuView extends View {
                 location = locations[rowIndex][colIndex];
                 
                 if (location.getVisited()) {
-                    System.out.print("| " + location.getName() + " ");
+                    this.console.print("| " + location.getName() + " ");
                 }
                 else {
-                    System.out.print("| ??? ");
+                    this.console.print("| ??? ");
                 }
             }
             
-            System.out.println("|");
-            System.out.println("  +-----+-----+-----+-----+-----+");
+            this.console.println("|");
+            this.console.println("  +-----+-----+-----+-----+-----+");
         }
     }
     

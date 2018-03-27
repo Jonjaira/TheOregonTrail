@@ -30,7 +30,7 @@ public class WorkingMenuView extends View{
         switch(menuWorkgin)
         {
             case "S":
-                System.out.println("\nJOB                 |  Point"
+                this.console.println("\nJOB                 |  Point"
                         + "\n___________________________"
                         + "\nDishwashing         |     10" 
                         + "\nBroken window       |     10" 
@@ -38,7 +38,7 @@ public class WorkingMenuView extends View{
                         + "\nChange wheels       |     30");
                 break;
             case "T":
-                System.out.println("\nHammer"
+                this.console.println("\nHammer"
                         + "\nScrewdriver"
                         + "\nWrench" 
                         + "\nSponge and soap" 
@@ -46,17 +46,18 @@ public class WorkingMenuView extends View{
                         + "\nSaw");
                 break;
             case "W":
-                System.out.println("\nWash the dishes all night after the "
+                this.console.println("\nWash the dishes all night after the "
                         + "town party");
-                System.out.println("\nChange the broken glass of the Local "
+                this.console.println("\nChange the broken glass of the Local "
                         + "store");
-                System.out.println("\nChange a shower tube");
-                System.out.println("\nThe village carriage has a broken wheel.");
+                this.console.println("\nChange a shower tube");
+                this.console.println("\nThe village carriage has a broken wheel.");
                 break;   
             case "Q":
                 return true;
             default:
-                System.out.println("Invalid menu Work.");
+                ErrorView.display(this.getClass().getName(),
+                "Invalid menu Work.");
         }
      
         return false;

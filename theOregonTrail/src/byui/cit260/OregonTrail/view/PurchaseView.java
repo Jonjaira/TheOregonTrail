@@ -24,7 +24,8 @@ public class PurchaseView extends View {
             quantity = Integer.parseInt(inputs);
         }
         catch (NumberFormatException e) {
-            System.out.println("Non-numeric values not allowed!\n");
+            ErrorView.display(this.getClass().getName(),
+                "Non-numeric values not allowed!\n");
             return false;
         }
         
