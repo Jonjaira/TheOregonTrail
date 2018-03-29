@@ -53,7 +53,10 @@ public enum Item {
 
     @Override
     public String toString() {
-        return "Item{" + "description=" + description + ", price=" + price + '}';
+        return "Item{" +
+                "name=" + name +
+                "description=" + description +
+                ", price=" + String.valueOf(price) + '}';
     }
 
 }

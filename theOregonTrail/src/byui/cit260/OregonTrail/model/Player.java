@@ -17,7 +17,6 @@ public class Player implements Serializable{
     
     private Character character;
     private double score;
-    private Game game;
     private Company company;
     private Inventory inventory;
     private Location currentLocation;
@@ -26,14 +25,6 @@ public class Player implements Serializable{
         this.company = new Company();
         this.score = 0;
         this.currentLocation = new Location(0, 0, true);
-    }
-
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
     }
 
     public Company getCompany() {
@@ -70,7 +61,12 @@ public class Player implements Serializable{
 
       @Override
     public String toString() {
-        return "Player{" + "name=" + this.character.getName() + ", score=" + score + '}';
+        return "Player{" +
+                "name=" + character.getName() +
+                ", score=" + String.valueOf(score) + 
+                ", company=" + company.toString() +
+                ", inventory=" + inventory.toString() +
+                ", location=" + currentLocation.toString() +'}';
     }
     
     @Override

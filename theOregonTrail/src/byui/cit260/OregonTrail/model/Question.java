@@ -5,11 +5,13 @@
  */
 package byui.cit260.OregonTrail.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author jonja
  */
-public class Question {
+public class Question implements Serializable{
     
     private String question;
     private String answer;

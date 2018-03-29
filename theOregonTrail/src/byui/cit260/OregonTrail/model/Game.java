@@ -15,7 +15,6 @@ import java.util.Objects;
 public class Game implements Serializable {
     
     // Class Variables
-    
     private double time;
     private String status;
     private Player player;
@@ -23,7 +22,7 @@ public class Game implements Serializable {
     
     public Game() {
     }
-
+    
     public Player getPlayer() {
         return player;
     }
@@ -58,7 +57,12 @@ public class Game implements Serializable {
     
         @Override
     public String toString() {
-        return "Game{" + "time=" + time + ", status=" + status + '}';
+        return "Game{" +
+                "time=" + String.valueOf(time) +
+                ", status=" + status +
+                ", player=" + player.toString() +
+                ", map=" + map.toString() +
+                '}';
     }
 
     @Override
@@ -66,6 +70,8 @@ public class Game implements Serializable {
         int hash = 3;
         hash = 37 * hash + (int) (Double.doubleToLongBits(this.time) ^ (Double.doubleToLongBits(this.time) >>> 32));
         hash = 37 * hash + Objects.hashCode(this.status);
+        hash = 37 * hash + Objects.hashCode(this.player);
+        hash = 37 * hash + Objects.hashCode(this.map);
         return hash;
     }
 
@@ -87,10 +93,10 @@ public class Game implements Serializable {
         if (!Objects.equals(this.status, other.status)) {
             return false;
         }
+        if (!Objects.equals(this.map, other.map)) {
+            return false;
+        }
         return true;
     }
-    
-    
-    
 }
 

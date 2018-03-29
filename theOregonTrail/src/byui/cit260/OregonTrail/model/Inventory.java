@@ -54,7 +54,8 @@ public class Inventory implements Serializable {
     
     @Override
     public String toString() {
-        return "Inventory{" + "inventory=" + inventory + '}';
+        return "Inventory{" +
+                "inventory=" + String.join(", ", inventory.toString()) + '}';
     }
 
     @Override

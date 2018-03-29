@@ -51,7 +51,9 @@ public class Map implements Serializable{
     
     @Override
     public String toString() {
-        return "Map{" + "rowCount=" + rowCount + ", columnCount=" + columnCount + '}';
+        return "Map{" +
+                "rowCount=" +String.valueOf(rowCount) +
+                ", columnCount=" + String.valueOf(columnCount) + '}';
     }
     
     @Override

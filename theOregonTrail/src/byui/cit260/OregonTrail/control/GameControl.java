@@ -11,6 +11,11 @@ import byui.cit260.OregonTrail.model.Player;
 import byui.cit260.OregonTrail.model.Character;
 import byui.cit260.OregonTrail.model.Game;
 import byui.cit260.OregonTrail.view.CompanyNamesView;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javaapplication1.JavaApplication1;
 
 /**
@@ -20,6 +25,44 @@ import javaapplication1.JavaApplication1;
 public class GameControl {
     
     private static String actor;
+    public static void saveGame(Game game, String filePath)
+        throws GameControlException, IOException {
+        
+        if (null == game) {
+            throw new GameControlException("Invalid Game");
+        }
+        
+        if (null == filePath) {
+            throw new GameControlException("Invalid File Name");
+        }
+        
+        try (FileOutputStream  outFile = new FileOutputStream (filePath);
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream (outFile)) {
+            objectOutputStream.writeObject(game);
+            objectOutputStream.close();
+        }
+        catch (IOException ex) {
+            throw ex;
+        }
+    }
+    
+    public static void loadGame(String fileName) 
+        throws GameControlException, IOException, ClassNotFoundException {
+                
+        if (null == fileName) {
+            throw new GameControlException("Invalid File Name");
+        }
+        
+        try (FileInputStream inFile = new FileInputStream(fileName);
+             ObjectInputStream objectInputStream = new ObjectInputStream(inFile);) {
+            Game loadedGame = (Game)objectInputStream.readObject();
+            JavaApplication1.setCurrentGame(loadedGame);
+            JavaApplication1.setPlayer(loadedGame.getPlayer());
+        }
+        catch (IOException ex) {
+            throw ex;
+        }
+    }
     
     public static double calcTotalAvailable( double allowance)
         throws GameControlException {

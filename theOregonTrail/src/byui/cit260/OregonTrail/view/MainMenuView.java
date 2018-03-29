@@ -19,6 +19,7 @@ public class MainMenuView extends View {
 
     public MainMenuView() {
     super ("\nN - Start new game"
+    + "\nL - Load Game"
     + "\nR - Restart existing game"
     +"\nH - Get help on how to play the game"
     +"\nS - Show the store"
@@ -40,7 +41,7 @@ public class MainMenuView extends View {
                 try {
                     startNewGame();
                 } catch (MapControlException | GameControlException e) {
-                    System.out.println(e.getMessage());
+                    this.console.println(e.getMessage());
                     return false;
                 }
                 break;
@@ -55,10 +56,14 @@ public class MainMenuView extends View {
                 break;
             case "M":
                 showGameMenu();
+                break;
             case "W":
                 workOptions();
             case "T":
                 statusWagon();
+                break;
+            case "L":
+                loadGame();
                 break;
             case "E":
                 return true;
@@ -111,5 +116,10 @@ public class MainMenuView extends View {
     private void statusWagon() {
         StatusWagonView statusWagonView = new StatusWagonView();
         statusWagonView.display();
+    }
+    
+    private void loadGame() {
+        StartSavedGameView startSavedGameView = new StartSavedGameView();
+        startSavedGameView.display();
     }
 }

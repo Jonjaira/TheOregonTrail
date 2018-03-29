@@ -75,7 +75,15 @@ Character(String name, String type, String repairAbility, String animalAbility,
 
     @Override
     public String toString() {
-        return "Character{" + "name=" + name + ", type=" + type + ", repairAbility=" + repairAbility + ", animalAbility=" + animalAbility + ", roadAbility=" + roadAbility + ", strenght=" + strenght + '}';
+        return "Character{" +
+                "name=" + name +
+                ", type=" + type +
+                ", repairAbility=" + repairAbility +
+                ", animalAbility=" + animalAbility +
+                ", roadAbility=" + roadAbility +
+                ", strenght=" + strenght + 
+                ", allowance=" + String.valueOf(allowance) +
+                '}';
     }
     
 }

@@ -17,6 +17,7 @@ public class GameMenuView extends View {
 
     public GameMenuView() {
     super ("\nV - View Map"
+    +"\nS - Save the game"        
     +"\nQ - Quit"
     +"\n\nEnter Selection Below: ");
     }
@@ -31,6 +32,9 @@ public class GameMenuView extends View {
         {
             case "V":
                 displayMap();
+                break;
+            case "S":
+                saveGame();
                 break;
             case "M":
                 movePlayer();
@@ -89,5 +93,10 @@ public class GameMenuView extends View {
     private void movePlayer() {
         MoveActorView moveActorView = new MoveActorView();
         moveActorView.display();
+    }
+
+    private void saveGame() {
+        SaveGameView saveGameView = new SaveGameView();
+        saveGameView.display();
     }
 }

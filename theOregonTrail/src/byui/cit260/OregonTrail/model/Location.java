@@ -88,7 +88,13 @@ public class Location implements Serializable {
 
     @Override
     public String toString() {
-        return "LocationScene{" + "name=" + name + ", activityType=" + activityType + '}';
+        return "LocationScene{" +
+                "row=" + String.valueOf(row) + 
+                ", col=" + String.valueOf(col) + 
+                ", name=" + name +
+                ", activityType=" + activityType + 
+                ", visited=" + String.valueOf(visited) + 
+                ", scene=" + scene.toString() + '}';
     }
 
     @Override
