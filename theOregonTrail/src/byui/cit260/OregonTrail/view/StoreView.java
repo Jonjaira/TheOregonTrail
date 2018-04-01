@@ -10,8 +10,6 @@ import byui.cit260.OregonTrail.exceptions.StoreControlException;
 import byui.cit260.OregonTrail.model.Item;
 import byui.cit260.OregonTrail.model.Store;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import javaapplication1.JavaApplication1;
 
 /**
@@ -202,7 +200,7 @@ public class StoreView extends View {
                 "Invalid Menu Item");
         }
      
-        return true;
+        return false;
     }
 
     private void purchaseItem(Item item) throws StoreControlException {

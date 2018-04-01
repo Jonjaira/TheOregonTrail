@@ -25,6 +25,7 @@ public class Player implements Serializable{
         this.company = new Company();
         this.score = 0;
         this.currentLocation = new Location(0, 0, true);
+        this.inventory = new Inventory();
     }
 
     public Company getCompany() {
@@ -33,6 +34,10 @@ public class Player implements Serializable{
     
     public Inventory getInventory() {
         return this.inventory;
+    }
+    
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
     }
     
     public Character getCharacter() {

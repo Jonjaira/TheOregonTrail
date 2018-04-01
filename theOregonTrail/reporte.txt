@@ -1,0 +1,9 @@
+
+
+    Invntory Repoert
+
+Description           Quantity     Price
+-----------           --------     -----
+Healthy, strong Oxen      4        20.00
+You will need appropiate attire      1        10.00
+For your hunting necessities     10         1.00

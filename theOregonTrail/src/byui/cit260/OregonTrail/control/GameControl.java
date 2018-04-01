@@ -10,6 +10,7 @@ import byui.cit260.OregonTrail.exceptions.MapControlException;
 import byui.cit260.OregonTrail.model.Player;
 import byui.cit260.OregonTrail.model.Character;
 import byui.cit260.OregonTrail.model.Game;
+import byui.cit260.OregonTrail.model.Store;
 import byui.cit260.OregonTrail.view.CompanyNamesView;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -139,6 +140,8 @@ public class GameControl {
         JavaApplication1.getCurrentGame().getPlayer().getCompany().setPeople(actors);
         
         JavaApplication1.getCurrentGame().setMap(MapControl.createMap(5, 5));
+        
+        JavaApplication1.getCurrentGame().getPlayer().getInventory().setInventoryItems(Store.getShoppingCart());
     }
     
     public static void setActor(String personage){

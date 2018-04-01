@@ -5,8 +5,10 @@
  */
 package byui.cit260.OregonTrail.view;
 
+import byui.cit260.OregonTrail.exceptions.GameControlException;
 import byui.cit260.OregonTrail.model.Game;
 import byui.cit260.OregonTrail.model.Location;
+import java.io.IOException;
 import javaapplication1.JavaApplication1;
 
 /**
@@ -17,7 +19,9 @@ public class GameMenuView extends View {
 
     public GameMenuView() {
     super ("\nV - View Map"
-    +"\nS - Save the game"        
+    +"\nS - Save the game"
+    +"\nM - Move player"
+    +"\nR - Inventory report"
     +"\nQ - Quit"
     +"\n\nEnter Selection Below: ");
     }
@@ -38,6 +42,13 @@ public class GameMenuView extends View {
                 break;
             case "M":
                 movePlayer();
+                break;
+            case "R":
+                try {
+                    inventoryReport();
+                } catch (GameControlException | IOException ex) {
+                    this.console.print("File could not be created!" + ex.getMessage());
+                }
             case "Q":
                 return true;
             default:
@@ -98,5 +109,20 @@ public class GameMenuView extends View {
     private void saveGame() {
         SaveGameView saveGameView = new SaveGameView();
         saveGameView.display();
+    }
+
+    private void inventoryReport() throws GameControlException, IOException {
+        InventoryReportView inventoryReportView = new InventoryReportView();
+        
+        this.console.println("\nEnter file path\n");
+            
+        try {
+            //Get the value entered from the keyboard
+            String filePath = this.keyboard.readLine();
+            inventoryReportView.InventoryReportView(filePath);
+        } catch (IOException ex) {
+            throw ex;
+        }
+            
     }
 }

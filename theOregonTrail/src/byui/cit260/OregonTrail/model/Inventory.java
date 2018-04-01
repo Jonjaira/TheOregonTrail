@@ -17,17 +17,18 @@ public class Inventory implements Serializable {
     //The data type I chose is an array list because the Items contained in the
     //inventory will be changing throughout the game. 
     
-    private ArrayList<Item> inventory = new ArrayList<Item>();
+    private ArrayList<Item> inventory;
 
     public Inventory() {
+        this.inventory = new ArrayList<Item>();
     }
      
 
-    public ArrayList<Item> getInventory() {
+    public ArrayList<Item> getInventoryItems() {
         return inventory;
     }
 
-    public void setInventory(ArrayList<Item> inventory) {
+    public void setInventoryItems(ArrayList<Item> inventory) {
         this.inventory = inventory;
     }
 
