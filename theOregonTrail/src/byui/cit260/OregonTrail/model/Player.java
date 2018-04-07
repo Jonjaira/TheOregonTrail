@@ -15,6 +15,8 @@ import java.util.Objects;
 public class Player implements Serializable{
     //Class Variables
     
+    private String name;
+    private double allowance;
     private Character character;
     private double score;
     private Company company;
@@ -26,6 +28,22 @@ public class Player implements Serializable{
         this.score = 0;
         this.currentLocation = new Location(0, 0, true);
         this.inventory = new Inventory();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getAllowance() {
+        return allowance;
+    }
+
+    public void setAllowance(double allowance) {
+        this.allowance = allowance;
     }
 
     public Company getCompany() {
@@ -64,10 +82,12 @@ public class Player implements Serializable{
         this.currentLocation = newLocation;
     }
 
-      @Override
+    @Override
     public String toString() {
         return "Player{" +
-                "name=" + character.getName() +
+                "name=" + name +
+                ", allowance=" + allowance +
+                ", character=" + character +
                 ", score=" + String.valueOf(score) + 
                 ", company=" + company.toString() +
                 ", inventory=" + inventory.toString() +
@@ -77,12 +97,11 @@ public class Player implements Serializable{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 41 * hash + Objects.hashCode(this.character.getName());
+        hash = 41 * hash + Objects.hashCode(this.name);
         hash = 41 * hash + (int) (Double.doubleToLongBits(this.score) ^ (Double.doubleToLongBits(this.score) >>> 32));
         return hash;
     }
-
-  
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -98,7 +117,7 @@ public class Player implements Serializable{
         if (Double.doubleToLongBits(this.score) != Double.doubleToLongBits(other.score)) {
             return false;
         }
-        if (!Objects.equals(this.character.getName(), other.character.getName())) {
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         return true;
@@ -107,8 +126,4 @@ public class Player implements Serializable{
     public void setCharacter(java.lang.Character character) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
-    
 }

@@ -7,10 +7,12 @@ package byui.cit260.OregonTrail.control;
 
 import byui.cit260.OregonTrail.exceptions.GameControlException;
 import byui.cit260.OregonTrail.exceptions.MapControlException;
+import byui.cit260.OregonTrail.model.Actor;
 import byui.cit260.OregonTrail.model.Player;
 import byui.cit260.OregonTrail.model.Character;
 import byui.cit260.OregonTrail.model.Game;
 import byui.cit260.OregonTrail.model.Store;
+import byui.cit260.OregonTrail.view.CompanyCharacterTypeView;
 import byui.cit260.OregonTrail.view.CompanyNamesView;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -26,6 +28,8 @@ import javaapplication1.JavaApplication1;
 public class GameControl {
     
     private static String actor;
+    private static Character character;
+    
     public static void saveGame(Game game, String filePath)
         throws GameControlException, IOException {
         
@@ -92,6 +96,7 @@ public class GameControl {
         player.setCharacter(character);
         
         JavaApplication1.setPlayer(player);
+        JavaApplication1.getPlayer().setAllowance(player.getCharacter().getAllowance());
         
         return new Player();
     }
@@ -120,31 +125,43 @@ public class GameControl {
     RETURN 1 // indicates success
     }*/
         CompanyNamesView companyNamesView = new CompanyNamesView();
-        String[] actors = new String[4];
+        CompanyCharacterTypeView companyCharacterTypeView = new CompanyCharacterTypeView();
+        Actor[] actors = new Actor[4];
 
         if (player == null)
             throw new GameControlException("Player is null");
         
         Game game = new Game();
         game.setPlayer(player);
+        game.setStatus("Started");
         JavaApplication1.setCurrentGame(game);
 
         for (int i = 0; i < 4; i++) {
             companyNamesView.display();
+            companyCharacterTypeView.display();
+                    
+            actors[i] = new Actor(actor, character);
 
-            actors[i] = actor;
-
-            System.out.println("\nA new member \"" + actors[i] + "\" has been added to the company");
+            System.out.println("\nA new member \"" + actor +
+                               "\" of type \"" + character.getType() +
+                               "\" has been added to the company");
         }
 
-        JavaApplication1.getCurrentGame().getPlayer().getCompany().setPeople(actors);
+        JavaApplication1.getCurrentGame().getPlayer().getCompany().addPeopleToCompany(actors);
         
         JavaApplication1.getCurrentGame().setMap(MapControl.createMap(5, 5));
+        
+        JavaApplication1.getCurrentGame().getPlayer().setCurrentLocation(game.getMap().getLocation(0, 0));
+        JavaApplication1.getCurrentGame().getPlayer().getCurrentLocation().setVisited(true);
         
         JavaApplication1.getCurrentGame().getPlayer().getInventory().setInventoryItems(Store.getShoppingCart());
     }
     
     public static void setActor(String personage){
         actor = personage;
+    }
+
+    public static void setCharacter(Character character) {
+        GameControl.character = character;
     }
 }

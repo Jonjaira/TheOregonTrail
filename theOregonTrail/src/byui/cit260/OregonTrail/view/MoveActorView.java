@@ -5,27 +5,56 @@
  */
 package byui.cit260.OregonTrail.view;
 
+import byui.cit260.OregonTrail.control.MapControl;
+import byui.cit260.OregonTrail.exceptions.MapControlException;
+import javaapplication1.JavaApplication1;
+
 /**
  *
  * @author jonja
  */
 public class MoveActorView extends View {
     public MoveActorView(){
-        super("Please enter the ROW and COLUMN where to move");
     }
     
-    private String[] getInputs() {
-        String[] inputs = new String[2];
+    @Override 
+    public void display() {
+        int row = 0;
+        int col = 0;
         
-        inputs[0] = getInput();
+        this.displayMessage = "Enter ROW: ";
+        try {
+            row = Integer.parseInt(this.getInput());
+        }
+        catch (NumberFormatException e) {
+            ErrorView.display(this.getClass().getName(),
+                "Non-numeric values not allowed!\n");
+        }
         
-        inputs[1] = getInput();
+        this.displayMessage = "Enter COLUMN: ";
+        try {
+            col = Integer.parseInt(this.getInput());
+        }
+        catch (NumberFormatException e) {
+            ErrorView.display(this.getClass().getName(),
+                "Non-numeric values not allowed!\n");
+        }
         
-        return inputs;
+        try {
+            this.doMoveAction(row, col);
+        }
+        catch (MapControlException ex) {
+            this.console.print("Actor could not be moved" + ex.getMessage());
+        }
     } 
     
     @Override
-    public boolean doAction(String inputs) {
+    public boolean doAction(String string) {
         return true;
+    }
+    
+    public void doMoveAction(int row, int col) 
+        throws MapControlException {
+        MapControl.moveActor(JavaApplication1.getCurrentGame().getPlayer(), row, col);
     }
 }

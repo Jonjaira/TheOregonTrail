@@ -38,8 +38,8 @@ public class StoreView extends View {
             +"\n12- " + Item.woodWheel.getName() + " ------ " + Item.woodWheel.getPrice()
             +"\nV - View Shopping Cart"
             +"\nL - Sort List Price"
+            +"\nA - Allowance Available"
             +"\nE - Exit"
-            +"\nAllowance Available: " + JavaApplication1.getPlayer().getCharacter().getAllowance()
             +"\n\nPlease select your option: ");
 }
         
@@ -184,14 +184,13 @@ public class StoreView extends View {
                 }  
                 break;
             case "V":
-               
                 viewShoppingCart();
-                
                 break;
             case "L":
-               
                 sortListItemPrice();
-               
+                break;
+            case "A":
+                this.console.println("Available Allowance: " + JavaApplication1.getPlayer().getCharacter().getAllowance());
                 break;
             case "E":
                 return true;
@@ -210,10 +209,12 @@ public class StoreView extends View {
         this.console.println("You selected " + item.getName());
         purchaseView.display();
         
-        remainingAllowance = StoreControl.buyItems(JavaApplication1.getPlayer().getCharacter().getAllowance(), item);
+        remainingAllowance = StoreControl.buyItems(JavaApplication1.getPlayer().getAllowance(), item);
         
         if(remainingAllowance != -1){
-               JavaApplication1.getPlayer().getCharacter().setAllowance(remainingAllowance);
+                JavaApplication1.getPlayer().setAllowance(remainingAllowance);
+
+                this.console.println("Available Allowance after purchase: " + JavaApplication1.getPlayer().getAllowance());
         }
     }
     

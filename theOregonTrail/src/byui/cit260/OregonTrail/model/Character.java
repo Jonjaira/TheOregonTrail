@@ -14,21 +14,24 @@ public enum Character {
     //All the characters in the game will have the same characteristics always.
     //For that reason they are set as an enum.
     
-    Banquer(" ", "Banquer", "Repair Ability: Low", "Animal AbilityHigh: Low", "Road Ability: Low","Strenght: Low", 900.00),
-    Carpenter(" ", "Carpenter", "Repair Ability: High", "Animal Ability: Low"," Road Ability: Medium", "Strenght: High", 720.00),
-    Farmer(" ", "Farmer", "Repair Ability: High", "Animal Ability: High", "Road Ability: High", "Strenght: High", 540.00);
+    Banquer  ("Banquer",   "Low",    "Low",    "Low",    "Low",   900.00),
+    Carpenter("Carpenter", "Mid",    "Mid",    "Mid",    "Mid",   720.00),
+    Farmer   ("Farmer",    "High",   "High",   "High",   "High",  540.00),
+    Man      ("Man",       "Medium", "Medium", "Medium", "High",    0.00),
+    Woman    ("Woman",     "Low",    "High",   "Low",    "Medium",  0.00),
+    Boy      ("Boy",       "Low",    "Low",    "Low",    "Low",     0.00),
+    Girl     ("Girl",      "Low",    "Low",    "Low",    "Low",     0.00),
+    ;
     
-    private String name;
-    private String type;
-    private String repairAbility;
-    private String animalAbility;
-    private String roadAbility;
-    private String strenght;
-    private double allowance;
+    private final String type;
+    private final String repairAbility;
+    private final String animalAbility;
+    private final String roadAbility;
+    private final String strenght;
+    private final double allowance;
     
-Character(String name, String type, String repairAbility, String animalAbility,
+Character(String type, String repairAbility, String animalAbility,
           String roadAbility, String strenght, double allowance){
-    this.name = name;
     this.type = type;
     this.repairAbility = repairAbility;
     this.animalAbility = animalAbility;
@@ -36,22 +39,6 @@ Character(String name, String type, String repairAbility, String animalAbility,
     this.strenght = strenght;
     this.allowance = allowance;
 }
-
-    public String getName() {
-        return name;
-    }
-    
-    public void setName (String name){
-        this.name = name;
-    }
-    
-    public double getAllowance() {
-        return this.allowance;
-    }
-    
-    public void setAllowance(double allowance) {
-        this.allowance = allowance;
-    }
     
     public String getType() {
         return type;
@@ -72,18 +59,20 @@ Character(String name, String type, String repairAbility, String animalAbility,
     public String getStrenght() {
         return strenght;
     }
+   
+    public double getAllowance() {
+        return this.allowance;
+    }
 
     @Override
     public String toString() {
         return "Character{" +
-                "name=" + name +
-                ", type=" + type +
-                ", repairAbility=" + repairAbility +
-                ", animalAbility=" + animalAbility +
-                ", roadAbility=" + roadAbility +
-                ", strenght=" + strenght + 
-                ", allowance=" + String.valueOf(allowance) +
+                "type=" + this.type +
+                ", repairAbility=" + this.repairAbility +
+                ", animalAbility=" + this.animalAbility +
+                ", roadAbility=" + this.roadAbility +
+                ", strenght=" + this.strenght + 
+                ", allowance=" + String.valueOf(this.allowance) +
                 '}';
     }
-    
 }

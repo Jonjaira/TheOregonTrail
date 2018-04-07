@@ -18,7 +18,7 @@ public class PurchaseView extends View {
        
     @Override
     public boolean doAction(String inputs) {
-        int quantity = 0;
+        int quantity;
         
         try {
             quantity = Integer.parseInt(inputs);

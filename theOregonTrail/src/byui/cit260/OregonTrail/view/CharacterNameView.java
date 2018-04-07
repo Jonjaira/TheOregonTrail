@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package byui.cit260.OregonTrail.view;
-import byui.cit260.OregonTrail.model.Player;
 import javaapplication1.JavaApplication1;
 
 /**
@@ -18,10 +17,10 @@ public class CharacterNameView extends View {
 
     @Override
     public boolean doAction(String value) {
-        JavaApplication1.getPlayer().getCharacter().setName(value);
+        JavaApplication1.getPlayer().setName(value);
                
         this.console.println("\n================================================= ");
-        this.console.print("Welcome to the game " + JavaApplication1.getPlayer().getCharacter().getName());
+        this.console.print("Welcome to the game " + JavaApplication1.getPlayer().getName());
         this.console.println(" the " + JavaApplication1.getPlayer().getCharacter().getType());
         this.console.println("We hope you have a lot of fun!");
         this.console.println("================================================= ");

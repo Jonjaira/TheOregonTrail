@@ -6,7 +6,7 @@
 package byui.cit260.OregonTrail.control;
 
 import byui.cit260.OregonTrail.exceptions.MapControlException;
-import byui.cit260.OregonTrail.model.Game;
+import byui.cit260.OregonTrail.model.DeathScene;
 import byui.cit260.OregonTrail.model.GenericScene;
 import byui.cit260.OregonTrail.model.Location;
 import byui.cit260.OregonTrail.model.Map;
@@ -71,7 +71,7 @@ public class MapControl {
         scenes[SceneType.mountains.ordinal()] = new GenericScene();
         scenes[SceneType.road.ordinal()]      = new GenericScene();
         scenes[SceneType.forest.ordinal()]    = new GenericScene();
-        scenes[SceneType.desert.ordinal()]    = new GenericScene();
+        scenes[SceneType.desert.ordinal()]    = new DeathScene();
         scenes[SceneType.city.ordinal()]      = new QuestionScene();
         scenes[SceneType.town.ordinal()]      = new QuestionScene();
         scenes[SceneType.lake.ordinal()]      = new QuestionScene();
@@ -129,53 +129,53 @@ public class MapControl {
         locations[0][0].setScene(scenes[SceneType.start.ordinal()]);
         locations[0][0].setName("STR");
         locations[0][1].setScene(scenes[SceneType.start.ordinal()]);
-        locations[0][0].setName("STR");
+        locations[0][1].setName("STR");
         locations[0][2].setScene(scenes[SceneType.road.ordinal()]);
-        locations[0][0].setName("ROD");
+        locations[0][2].setName("ROD");
         locations[0][3].setScene(scenes[SceneType.mountains.ordinal()]);
-        locations[0][0].setName("MTN");
-        locations[0][4].setScene(scenes[SceneType.mountains.ordinal()]);
-        locations[0][0].setName("MTN");
+        locations[0][3].setName("MTN");
+        locations[0][4].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[0][4].setName("DST");
         locations[1][0].setScene(scenes[SceneType.start.ordinal()]);
-        locations[0][0].setName("STR");
+        locations[1][0].setName("STR");
         locations[1][1].setScene(scenes[SceneType.start.ordinal()]);
-        locations[0][0].setName("STR");
+        locations[1][1].setName("STR");
         locations[1][2].setScene(scenes[SceneType.road.ordinal()]);
-        locations[0][0].setName("ROD");
+        locations[1][2].setName("ROD");
         locations[1][3].setScene(scenes[SceneType.lake.ordinal()]);
-        locations[0][0].setName("LAK");
+        locations[1][3].setName("LAK");
         locations[1][4].setScene(scenes[SceneType.forest.ordinal()]);
-        locations[0][0].setName("FRS");
+        locations[1][4].setName("FRS");
         locations[2][0].setScene(scenes[SceneType.road.ordinal()]);
-        locations[0][0].setName("ROD");
+        locations[2][0].setName("ROD");
         locations[2][1].setScene(scenes[SceneType.road.ordinal()]);
-        locations[0][0].setName("ROD");
+        locations[2][1].setName("ROD");
         locations[2][2].setScene(scenes[SceneType.city.ordinal()]);
-        locations[0][0].setName("CIT");
+        locations[2][2].setName("CIT");
         locations[2][3].setScene(scenes[SceneType.road.ordinal()]);
-        locations[0][0].setName("ROD");
+        locations[2][3].setName("ROD");
         locations[2][4].setScene(scenes[SceneType.forest.ordinal()]);
-        locations[0][0].setName("FOR");
+        locations[2][4].setName("FOR");
         locations[3][0].setScene(scenes[SceneType.river.ordinal()]);
-        locations[0][0].setName("RVR");
+        locations[3][0].setName("RVR");
         locations[3][1].setScene(scenes[SceneType.lake.ordinal()]);
-        locations[0][0].setName("LAK");
+        locations[3][1].setName("LAK");
         locations[3][2].setScene(scenes[SceneType.town.ordinal()]);
-        locations[0][0].setName("TWN");
+        locations[3][2].setName("TWN");
         locations[3][3].setScene(scenes[SceneType.finish.ordinal()]);
-        locations[0][0].setName("END");
+        locations[3][3].setName("END");
         locations[3][4].setScene(scenes[SceneType.finish.ordinal()]);
-        locations[0][0].setName("END");
-        locations[4][0].setScene(scenes[SceneType.mountains.ordinal()]);
-        locations[0][0].setName("MTN");
+        locations[3][4].setName("END");
+        locations[4][0].setScene(scenes[SceneType.desert.ordinal()]);
+        locations[4][0].setName("DST");
         locations[4][1].setScene(scenes[SceneType.mountains.ordinal()]);
-        locations[0][0].setName("MTN");
+        locations[4][1].setName("MTN");
         locations[4][2].setScene(scenes[SceneType.road.ordinal()]);
-        locations[0][0].setName("ROD");
+        locations[4][2].setName("ROD");
         locations[4][3].setScene(scenes[SceneType.finish.ordinal()]);
-        locations[0][0].setName("END");
+        locations[4][3].setName("END");
         locations[4][4].setScene(scenes[SceneType.finish.ordinal()]);
-        locations[0][0].setName("END");
+        locations[4][4].setName("END");
     }
     
     public static Location moveActor(Player actor, int newRow, int newColumn)
@@ -200,6 +200,7 @@ public class MapControl {
         Location newLocation = map.getLocation(newRow, newColumn);
         
         actor.setCurrentLocation(newLocation);
+        actor.getCurrentLocation().setVisited(true);
         
         return newLocation;
     }

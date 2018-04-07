@@ -6,7 +6,9 @@
 package byui.cit260.OregonTrail.model;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -16,20 +18,29 @@ public class Company implements Serializable {
     //This class is set as an array because its components will be always five
     //but the names might change.
     
-    private String[] people = new String[4];
+    private ArrayList<Actor> people;
 
     public Company() {
+        this.people = new ArrayList<>();
     }
 
+    public void addPersonToCompany(Actor person){
+        this.people.add(person);
+    }   
+
+    public void addPeopleToCompany(Actor[] people){
+        this.people.addAll(Arrays.asList(people));
+    }
+    
     @Override
     public String toString() {
-        return "Company{" + "people=" + Arrays.toString(people) + '}';
+        return "Company{" + "people=" + String.join(", ", people.toString()) + '}';
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 11 * hash + Arrays.deepHashCode(this.people);
+        hash = 11 * hash + Objects.hashCode(this.people);
         return hash;
     }
 
@@ -45,20 +56,9 @@ public class Company implements Serializable {
             return false;
         }
         final Company other = (Company) obj;
-        if (!Arrays.deepEquals(this.people, other.people)) {
+        if (!Objects.equals(this.people, other.people)) {
             return false;
         }
         return true;
     }
-    
-    
-
-    public String[] getPeople() {
-        return people;
-    }
-
-    public void setPeople(String[] people) {
-        this.people = people;
-    }
-    
 }

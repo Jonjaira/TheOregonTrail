@@ -8,7 +8,6 @@ package byui.cit260.OregonTrail.view;
 import byui.cit260.OregonTrail.control.GameControl;
 import byui.cit260.OregonTrail.exceptions.GameControlException;
 import byui.cit260.OregonTrail.exceptions.MapControlException;
-import java.util.Scanner;
 import javaapplication1.JavaApplication1;
 
 /**
