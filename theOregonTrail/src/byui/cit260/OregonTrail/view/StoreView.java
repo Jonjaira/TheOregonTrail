@@ -37,7 +37,7 @@ public class StoreView extends View {
             +"\n11- " + Item.metalWheel.getName()+ " ----- " + Item.metalWheel.getPrice()
             +"\n12- " + Item.woodWheel.getName() + " ------ " + Item.woodWheel.getPrice()
             +"\nV - View Shopping Cart"
-            +"\nL - Sort List Price"
+            +"\nL - Sort Shopping Cart by Item Amount"
             +"\nA - Allowance Available"
             +"\nE - Exit"
             +"\n\nPlease select your option: ");
@@ -187,7 +187,7 @@ public class StoreView extends View {
                 viewShoppingCart();
                 break;
             case "L":
-                sortListItemPrice();
+                sortShoppingCartByItemAmount();
                 break;
             case "A":
                 this.console.println("Available Allowance: " + JavaApplication1.getPlayer().getCharacter().getAllowance());
@@ -247,42 +247,28 @@ public class StoreView extends View {
         }
     }
     
-    public void sortListItemPrice (){
-//        double[] list = new double[Item.values().length];
-//        double[] upDownList = new double[Item.values().length];
-        
-        for (int i = 0; i<Item.values().length ; i++)
-        {
-        this.console.print("\n i=" +i+"\n ");
-//            int index = i;
-//            for (int j = i+1; j<Item.values().length; j++ ){
-            for (int j = 0; j<Item.values().length && i != j; j++ ){
-        this.console.print("\n J " +j+" I = "+ i);
-                if (Item.values()[j].getPrice() < Item.values()[i].getPrice()){
-                this.console.print("\n j=i+1" +Item.values()[j].getPrice()+" < "+ Item.values()[i].getPrice());
-//                            index = j;
-        //                System.out.print("\n"+Item.values()[index].getName()+" "+Item.values()[index].getPrice());
-                    Item upDownList = Item.values()[i];
-                                     this.console.print("\n"+upDownList);
-                    Item.values()[i] = Item.values()[j];
-                                     this.console.print("\n"+Item.values()[i]);
-                    Item.values()[j] = upDownList;
-                                     this.console.print("\n"+Item.values()[j]+"\n");
-                this.console.print("\n"+ i +"  "+ Item.values()[i]+" "+Item.values()[j]/*+ Item.values()[i].getName()+"  "+Item.values()[i].getPrice()*/);
-                }
-                
-                }
-//            System.out.println("\n"+Item.values()[i].getPrice());
-            for (Item value : Item.values()) {
-                this.console.print("\n" + value.getName() + "  " + value.getPrice());
-            }
-        }
-        
-//        for (Item item : Item.values()) {
-//            System.out.print("\n" + item.getName()+"  "+item.getPrice());
-//                
-//                }
+    public void sortShoppingCartByItemAmount (){
         
     }
     
+    private void bubbleSort(int array[]) {
+        int n = array.length;
+        int k;
+        for (int m = n; m >= 0; m--) {
+            for (int i = 0; i < n - 1; i++) {
+                k = i + 1;
+                if (array[i] > array[k]) {
+                    swapNumbers(i, k, array);
+                }
+            }
+        }
+    }
+  
+    private void swapNumbers(int i, int j, int[] array) {
+  
+        int temp;
+        temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
 }
